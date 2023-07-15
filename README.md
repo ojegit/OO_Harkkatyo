@@ -1,5 +1,7 @@
 # Object oriented programming: final project
 Done: 
-- Fragments: initialized
-- Lutemons: storage, super class and subclasses done  
+- Main GUI pages: initialized
+- Included fragments: initialized
+- Lutemons: storage, super class and subclasses done
+- Functionalities: not done
 Version: x.x.x
