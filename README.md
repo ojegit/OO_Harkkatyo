@@ -1,2 +1,3 @@
-# Olio-ohjelmoinnin harjoitustyö
-V 1.0
+# Object oriented programming: final project
+Features: TBA
+Version: 1.0.0
