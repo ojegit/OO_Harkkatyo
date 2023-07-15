@@ -21,6 +21,7 @@ public class Storage {
     public Lutemon getLutemon(int id) {return lutemons.get(id);}
     public void addLutemon(Lutemon lutemon) {
         //note: id/key of the HashMap VS id of Lutemon!
+
         lutemons.put(lutemon.getId(),lutemon);
     }
     public void listLutemons(){

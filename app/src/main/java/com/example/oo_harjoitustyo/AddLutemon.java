@@ -30,31 +30,40 @@ public class AddLutemon extends AppCompatActivity {
             RadioGroup rg = findViewById(R.id.rgLutemonColor);
             EditText et = findViewById(R.id.etName);
             String name = String.valueOf(et.getText());
+            int id = Lutemon.getIdCounter() + 1;
 
             //check radiobutton
             switch (rg.getCheckedRadioButtonId()) {
                 case R.id.rbWhite:
-                    lutemon = new White(name,0);
+                    lutemon = new White(name,id);
                     break;
                 case R.id.rbGreen:
-                    lutemon = new Green(name,0);
+                    lutemon = new Green(name,id);
                     break;
                 case R.id.rbPink:
-                    lutemon = new Pink(name,0);
+                    lutemon = new Pink(name,id);
                     break;
                 case R.id.rbOrange:
-                    lutemon = new Orange(name,0);
+                    lutemon = new Orange(name,id);
                     break;
                 case R.id.rbBlack:
-                    lutemon = new Black(name,0);
+                    lutemon = new Black(name,id);
                     break;
             }
+
+            System.out.println("Lutemon counter: "+ Lutemon.getIdCounter());
 
             //add new object
             Storage.getInstance().addLutemon(lutemon);
 
             //notify user about the event
-            Toast.makeText(this.getApplicationContext(), lutemon.getColor() +" generated.", Toast.LENGTH_SHORT);
+            String msg = lutemon.getColor() +" Lutemon generated.";
+
+            //TOAST NOT WORKING!
+            //Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+            //Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT);
+            System.out.println(msg);
+
         });
     }
 

@@ -11,9 +11,11 @@ public class Lutemon {
     protected int id;
 
     protected int imageSrc;
-    //private int idCounter;
+    private static int idCounter;
 
+    public Lutemon(){}
     public Lutemon(String name, String color, int attack, int defence, int experience, int health, int maxHealth, int id) {
+        idCounter++;
         this.name = name;
         this.color = color;
         this.attack = attack;
@@ -77,6 +79,8 @@ public class Lutemon {
     public int getId() {
         return id;
     }
+
+    public static int getIdCounter() {return idCounter;}
 
 
 }

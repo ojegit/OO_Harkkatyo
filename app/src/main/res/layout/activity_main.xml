@@ -49,12 +49,13 @@
                 android:id="@+id/btnListLutemons"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="32dp"
                 android:onClick="switchToListLutemons"
                 android:text="Listaa lutemonit"
-                app:layout_constraintEnd_toEndOf="@+id/btnAddLutemon"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/btnAddLutemon"
-                tools:layout_editor_absoluteY="138dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnAddLutemon" />
 
             <Button
                 android:id="@+id/btnAddLutemon"
@@ -63,31 +64,34 @@
                 android:onClick="switchToAddLutemon"
                 android:text="Lisää uusi lutemon"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.095"
-                tools:layout_editor_absoluteX="105dp" />
+                app:layout_constraintVertical_bias="0.095" />
 
             <Button
                 android:id="@+id/btnMoveLutemons"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="32dp"
                 android:onClick="switchToMoveLutemons"
                 android:text="Siirrä lutemoneja"
-                app:layout_constraintEnd_toEndOf="@+id/btnListLutemons"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/btnListLutemons"
-                tools:layout_editor_absoluteY="218dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnListLutemons" />
 
             <Button
                 android:id="@+id/btnBattleArena"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
+                android:layout_marginTop="32dp"
                 android:onClick="switchToBattleArena"
                 android:text="Taisteluareenalle!"
-                app:layout_constraintEnd_toEndOf="@+id/btnMoveLutemons"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/btnMoveLutemons"
-                tools:layout_editor_absoluteY="297dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnMoveLutemons" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>

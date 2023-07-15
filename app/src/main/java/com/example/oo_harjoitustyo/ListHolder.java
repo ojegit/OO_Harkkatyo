@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ListHolder extends RecyclerView.ViewHolder {
 
     ImageView ivPortrait;
-    TextView tvName, tvAttack, tvDefense, tvHealth;
+    TextView tvName, tvAttack, tvDefense, tvHealth, tvExperience;
     public ListHolder(@NonNull View itemView) {
         super(itemView);
         ivPortrait = itemView.findViewById(R.id.ivPortrait);
@@ -18,5 +18,6 @@ public class ListHolder extends RecyclerView.ViewHolder {
         tvAttack = itemView.findViewById(R.id.tvAttack);
         tvDefense = itemView.findViewById(R.id.tvDefense);
         tvHealth = itemView.findViewById(R.id.tvHealth);
+        tvExperience = itemView.findViewById(R.id.tvExperience);
     }
 }

@@ -33,9 +33,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder> implements Ser
         //set data
         holder.ivPortrait.setImageResource(lutemons.get(position).getImageSrc());
         holder.tvName.setText(String.valueOf(lutemons.get(position).getName()));
-        holder.tvAttack.setText(String.valueOf(lutemons.get(position).getAttack()));
-        holder.tvDefense.setText(String.valueOf(lutemons.get(position).getDefence())); //typo
-        holder.tvHealth.setText(String.valueOf(lutemons.get(position).getHealth()));
+        holder.tvAttack.setText("Hyökkäys: " +String.valueOf(lutemons.get(position).getAttack()));
+        holder.tvDefense.setText("Puolustus: " +String.valueOf(lutemons.get(position).getDefence())); //typo
+        holder.tvHealth.setText("Elämä: " +String.valueOf(lutemons.get(position).getHealth()));
+        holder.tvExperience.setText("Kokemus: " +String.valueOf(lutemons.get(position).getExperience()));
     }
 
     @Override

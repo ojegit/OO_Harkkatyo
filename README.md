@@ -1,6 +1,9 @@
 # Object oriented programming: final project
 ### Done: 
 - Main GUI pages: initialized, add page
+- TabView2 & ViewPager2 added to move Lutemon page
+- RecycleView added to list Lutemon page
+- Add Lutemon page working and showing all generater instance on list Lutemon page
 - Lutemon class and its subclasses added
 - Storage singleton added
 - Drawable picture reference added to Lutemon subclasses, not compulsory

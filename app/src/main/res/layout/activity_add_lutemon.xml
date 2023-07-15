@@ -51,20 +51,23 @@
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/rgLutemonColor"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="@+id/rgLutemonColor"
-        tools:layout_editor_absoluteY="262dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgLutemonColor"
         tools:text="Lutemonin nimi" />
 
     <Button
         android:id="@+id/btnAddNewLutemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="Lisää uusi Lutemon"
-        app:layout_constraintEnd_toEndOf="@+id/etName"
-        app:layout_constraintStart_toStartOf="@+id/etName"
-        tools:layout_editor_absoluteY="342dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
