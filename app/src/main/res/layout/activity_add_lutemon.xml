@@ -7,7 +7,7 @@
     tools:context=".AddLutemon">
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/rgLutemonColor"
         android:layout_width="183dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,7 +41,7 @@
             android:text="Oranssi" />
 
         <RadioButton
-            android:id="@+id/rbMusta"
+            android:id="@+id/rbBlack"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:text="Musta" />
@@ -53,9 +53,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="@+id/rgLutemonColor"
         app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintStart_toStartOf="@+id/rgLutemonColor"
         tools:layout_editor_absoluteY="262dp"
         tools:text="Lutemonin nimi" />
 

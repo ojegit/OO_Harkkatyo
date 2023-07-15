@@ -1,7 +1,9 @@
 package com.example.oo_harjoitustyo;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Set;
 
 public class Storage {
 
@@ -34,5 +36,12 @@ public class Storage {
             });
     }
 
+    public HashMap<Integer,Lutemon> getLutemons() {return lutemons;}
+    public ArrayList<Lutemon> getLutemonsList() {
+        Collection<Lutemon> values = lutemons.values();
+        return (
+                new ArrayList<Lutemon>(values)
+        );
+    }
 
 }

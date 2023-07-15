@@ -1,14 +1,19 @@
 package com.example.oo_harjoitustyo.lutemons;
 
+import android.net.Uri;
+
 import com.example.oo_harjoitustyo.Lutemon;
+import com.example.oo_harjoitustyo.R;
 
 public class Black extends Lutemon {
     private static int attack = 9;
     private static int defence = 0;
     private static int maxHealth = 16;
     private static String color = "Black";
+    private static int imageSrc = R.drawable.placeholder;
     public Black(String nimi, int id) {
         super(nimi, color, attack, defence,0,maxHealth,maxHealth, id);
+        setImageSrc(imageSrc);
     }
 
 }
