@@ -14,3 +14,5 @@
     * sorting list based on lutemon's abilities (string: name, int: power, defence, health)
     * sorting list based on time added (this field needs to be added)
 ### Version: x.x.x
+
+- Finally: add proper documentation and class diagrams to `/documentation` and `/documentation/ht.xmi`!
