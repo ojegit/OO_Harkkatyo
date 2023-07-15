@@ -1,3 +1,5 @@
 # Object oriented programming: final project
-Features: TBA
-Version: 1.0.0
+Done: 
+- Fragments: initialized
+- Lutemons: storage, super class and subclasses done  
+Version: x.x.x

@@ -5,21 +5,34 @@ import java.util.HashMap;
 
 public class Storage {
 
-    //private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
-    private ArrayList<Lutemon> lutemons = new ArrayList<>();
+    private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
+    //private ArrayList<Lutemon> lutemons = new ArrayList<>();
 
     private static Storage single_instance = null;
 
     public static synchronized Storage getInstance() {
         //singleton
-        if(single_instance == null)
-            single_instance = new Storage();
+        if(single_instance == null) {single_instance = new Storage();}
         return single_instance;
     }
 
     public Lutemon getLutemon(int id) {return lutemons.get(id);}
-    public void addLutemon(Lutemon lutemon) {lutemons.add(lutemon);}
-    public Lutemon getLutemons(){return lutemons;}
+    public void addLutemon(Lutemon lutemon) {
+        //note: id/key of the HashMap VS id of Lutemon!
+        lutemons.put(lutemon.getId(),lutemon);
+    }
+    public void listLutemons(){
+        lutemons.forEach((key,obj) ->
+        {
+                System.out.println("key: "+key+ ", " +
+                        "Lutemon: {" +
+                        "Id: "+obj.getId()+" "+
+                        "Color: "+obj.getColor()+" "+
+                        "Experience: "+obj.getExperience()+" "+
+                        "Health: "+obj.getHealth()+
+                        "}");
+            });
+    }
 
 
 }
