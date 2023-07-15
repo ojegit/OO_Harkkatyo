@@ -8,13 +8,15 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    Storage storage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //initialize storage
-        Storage storage = Storage.getInstance();
+        storage = Storage.getInstance();
     }
 
     public void switchToAddLutemon(View view) {
