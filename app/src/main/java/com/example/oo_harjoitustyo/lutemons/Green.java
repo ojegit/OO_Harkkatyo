@@ -7,10 +7,9 @@ public class Green extends Lutemon {
     private static int attack = 6;
     private static int defence = 3;
     private static int maxHealth = 19;
-    private static String color = "Green";
     private static int imageSrc = R.drawable.green_lutemon;
     public Green(String nimi, int id){
-        super(nimi, color, attack, defence,0,maxHealth,maxHealth, id);
+        super(nimi, Color.GREEN, attack, defence,0,maxHealth,maxHealth, id);
         setImageSrc(imageSrc);
     }
 }

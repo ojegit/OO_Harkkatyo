@@ -1,8 +1,24 @@
 package com.example.oo_harjoitustyo;
 
-public class Lutemon {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Lutemon implements Serializable {
+    //
+    private static final long serialVersionUID = 123456789L;
+    //
+
+    //Available colors
+    public static enum Color {
+        BLACK,
+        GREEN,
+        ORANGE,
+        PINK,
+        WHITE
+    }
+
     protected String name;
-    protected String color;
+    protected Color color;
     protected int attack;
     protected int defence;
     protected int experience;
@@ -11,10 +27,28 @@ public class Lutemon {
     protected int id;
 
     protected int imageSrc;
+
+    //no instances
     private static int idCounter;
 
+    //bookkeeping
+    public int noWins; //number of winds (health > 0 after the battle concludes)
+    public int noLosses; //number of losses (health <= after the battle concludes)
+    public int noTrained; //number of times trained
+    public int amountOfExperienceTrained; //experience accrued from training
+    public String createdTimestamp; //timestamp when instance was created
+    public String removedTimestamp; //timestamp when instance was deleted (if kept alive then may never be deleted)
+    public int noAttacks;
+    public int noDefences;
+    public int totalDamageDone;
+    public int noTimesReset;
+
+    public int noLastOpponentsSaved;
+    public ArrayList<Lutemon> lastOpponents;
+    //
+
     public Lutemon(){}
-    public Lutemon(String name, String color, int attack, int defence, int experience, int health, int maxHealth, int id) {
+    public Lutemon(String name, Color color, int attack, int defence, int experience, int health, int maxHealth, int id) {
         idCounter++;
         this.name = name;
         this.color = color;
@@ -36,6 +70,12 @@ public class Lutemon {
         int netHealth = this.health - (lutemon.attack - this.defence);
         this.health = netHealth;
     }
+
+
+    public void resetHealth() {
+        this.health = new Integer(maxHealth); //copy the value
+    }
+
     public int attack(){return -1;}
     public int getNumberOfCreatedLutemons(){return -1;}
 
@@ -51,7 +91,7 @@ public class Lutemon {
         return name;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
@@ -80,7 +120,14 @@ public class Lutemon {
         return id;
     }
 
+
     public static int getIdCounter() {return idCounter;}
 
 
+
+
+    @Override
+    public String toString(){
+        return id+": "+color+"("+name+") att: " +attack+"; def: "+defence+ "; exp: "+experience+"; health: "+health+ "/"+maxHealth;
+    }
 }

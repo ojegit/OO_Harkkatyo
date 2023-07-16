@@ -7,10 +7,9 @@ public class Pink extends Lutemon {
     private static int attack = 7;
     private static int defence = 2;
     private static int maxHealth = 18;
-    private static String color = "Pink";
     private static int imageSrc = R.drawable.pink_lutemon;
     public Pink(String nimi, int id) {
-        super(nimi, color, attack, defence,0,maxHealth,maxHealth, id);
+        super(nimi, Color.PINK, attack, defence,0,maxHealth,maxHealth, id);
         setImageSrc(imageSrc);
     }
 }

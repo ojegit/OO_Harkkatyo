@@ -9,10 +9,9 @@ public class Black extends Lutemon {
     private static int attack = 9;
     private static int defence = 0;
     private static int maxHealth = 16;
-    private static String color = "Black";
     private static int imageSrc = R.drawable.black_lutemon;
     public Black(String nimi, int id) {
-        super(nimi, color, attack, defence,0,maxHealth, maxHealth, id);
+        super(nimi, Color.BLACK, attack, defence,0,maxHealth, maxHealth, id);
         setImageSrc(imageSrc);
     }
 

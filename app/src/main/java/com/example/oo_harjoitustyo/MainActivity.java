@@ -9,14 +9,19 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     Storage storage;
+    StatisticsStorage statisticsStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initialize storage
+
+        //initialize Lutemon storage
         storage = Storage.getInstance();
+
+        //initialize LutemonStatistics storage
+        statisticsStorage = StatisticsStorage.getInstance();
     }
 
     public void switchToAddLutemon(View view) {

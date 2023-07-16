@@ -1,11 +1,17 @@
 package com.example.oo_harjoitustyo;
 
+import android.content.Context;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Set;
 
 public class Storage {
+
 
     private HashMap<Integer, Lutemon> lutemons = new HashMap<>();
     //private ArrayList<Lutemon> lutemons = new ArrayList<>();
@@ -24,6 +30,17 @@ public class Storage {
 
         lutemons.put(lutemon.getId(),lutemon);
     }
+
+    public void remove(int id) {
+        lutemons.remove(id);
+    }
+
+    public Lutemon removeReturn(int id) {
+        Lutemon lutemon = lutemons.get(id);
+        lutemons.remove(id);
+        return lutemon;
+    }
+
     public void listLutemons(){
         lutemons.forEach((key,obj) ->
         {
@@ -43,6 +60,43 @@ public class Storage {
         return (
                 new ArrayList<Lutemon>(values)
         );
+    }
+
+
+    //load data from file
+    public void loadStorage(Context context) {
+        try {
+            ObjectInputStream ois = new ObjectInputStream(context.openFileInput("lutemons.data"));
+            lutemons = (HashMap<Integer, Lutemon>) ois.readObject();
+            ois.close();
+            System.out.println("File read successful!");
+        } catch (FileNotFoundException e) {
+            System.out.println("File read failed!: "+ e);
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("File read failed!: " +e);
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            System.out.println("File read failed!: " +e);
+            e.printStackTrace();
+        }
+    }
+
+
+    //save data to file
+    public void saveStorage(Context context) {
+
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(context.openFileOutput("lutemons.data", Context.MODE_PRIVATE));
+            oos.writeObject(lutemons);
+        } catch (FileNotFoundException e) {
+            System.out.println("Saving users failed!: "+ e);
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Saving users failed!: " +e);
+        } finally {
+            //
+        }
     }
 
 }
