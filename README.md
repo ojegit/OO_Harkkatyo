@@ -1,7 +1,10 @@
 # Object oriented programming: final project
+
+### TBA: add scoring table here
+
 ### Not done:
-- save/load of statistics
-- combat graphics
+- save/load statistics
+- combat graphics (tip: use the fixed images here since they're already included in the objects)
 - collect statistics (e.g no days trained, no deaths, damage done, no exp, no kills, no times trained etc; do all of this color specific)
 - print graphs of statistics 
 - restore perished lutemons
@@ -16,6 +19,9 @@
 - a) loading of objects in different fragments based or b) state or information passing between fragment
 - fragment functionality /w viewpager2 and tab
 - save / load of storage
+- implement recycleview
+- add pictures to each lutemon (currently fixed, but different nonetheless)
+- implement fragments
 #
 ### Changes:
 #### 07/16/2023
