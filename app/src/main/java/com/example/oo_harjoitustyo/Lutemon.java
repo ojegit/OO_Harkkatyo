@@ -2,11 +2,19 @@ package com.example.oo_harjoitustyo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Lutemon implements Serializable {
     //
     private static final long serialVersionUID = 123456789L;
     //
+
+    public enum LutemonState {
+        HOME,
+        TRAIN,
+        BATTLE,
+        PERISHED
+    }
 
     //Available colors
     public static enum Color {
@@ -24,7 +32,8 @@ public class Lutemon implements Serializable {
     protected int experience;
     protected int health;
     protected int maxHealth;
-    protected int id;
+    protected String id;
+    protected LutemonState lutemonState;
 
     protected int imageSrc;
 
@@ -48,8 +57,9 @@ public class Lutemon implements Serializable {
     //
 
     public Lutemon(){}
-    public Lutemon(String name, Color color, int attack, int defence, int experience, int health, int maxHealth, int id) {
+    public Lutemon(String name, Color color, int attack, int defence, int experience, int health, int maxHealth) {
         idCounter++;
+        this.lutemonState = LutemonState.HOME;
         this.name = name;
         this.color = color;
         this.attack = attack;
@@ -57,7 +67,9 @@ public class Lutemon implements Serializable {
         this.experience = experience;
         this.health = health;
         this.maxHealth = maxHealth;
-        this.id = id;
+
+        //use time (in seconds) as unique id
+        this.id = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));;
     }
 
     //Methods
@@ -71,6 +83,8 @@ public class Lutemon implements Serializable {
         this.health = netHealth;
     }
 
+    public LutemonState getLutemonState() {return lutemonState;}
+    public void setLutemonState(LutemonState lutemonState) {this.lutemonState = lutemonState;}
 
     public void resetHealth() {
         this.health = new Integer(maxHealth); //copy the value
@@ -116,7 +130,7 @@ public class Lutemon implements Serializable {
         return maxHealth;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.io.Serializable;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,6 +39,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder> implements Ser
         holder.tvDefense.setText("Puolustus: " +String.valueOf(lutemons.get(position).getDefence())); //typo
         holder.tvHealth.setText("Elämä: " +String.valueOf(lutemons.get(position).getHealth()));
         holder.tvExperience.setText("Kokemus: " +String.valueOf(lutemons.get(position).getExperience()));
+
+        //date format
+        SimpleDateFormat DateFormat = new SimpleDateFormat("MM/dd/yyyy, HH:mm");
+
+        //convert to long, to milliseconds, to Date and finally apply format
+        String strDate  = DateFormat.format( new Date(1000 * Long.parseLong(lutemons.get(position).getId())));
+        holder.tvTimeCreated.setText(strDate);
     }
 
     @Override

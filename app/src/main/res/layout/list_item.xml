@@ -102,6 +102,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.921"
             app:srcCompat="@drawable/delete_icon" />
+
+        <TextView
+            android:id="@+id/tvTimeCreated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="8sp"
+            android:textStyle="italic"
+            app:layout_constraintBaseline_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.367"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.955" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

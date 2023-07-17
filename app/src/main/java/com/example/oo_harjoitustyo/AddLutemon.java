@@ -30,24 +30,23 @@ public class AddLutemon extends AppCompatActivity {
             RadioGroup rg = findViewById(R.id.rgLutemonColor);
             EditText et = findViewById(R.id.etName);
             String name = String.valueOf(et.getText());
-            int id = Lutemon.getIdCounter() + 1;
 
             //check radiobutton
             switch (rg.getCheckedRadioButtonId()) {
                 case R.id.rbWhite:
-                    lutemon = new White(name,id);
+                    lutemon = new White(name);
                     break;
                 case R.id.rbGreen:
-                    lutemon = new Green(name,id);
+                    lutemon = new Green(name);
                     break;
                 case R.id.rbPink:
-                    lutemon = new Pink(name,id);
+                    lutemon = new Pink(name);
                     break;
                 case R.id.rbOrange:
-                    lutemon = new Orange(name,id);
+                    lutemon = new Orange(name);
                     break;
                 case R.id.rbBlack:
-                    lutemon = new Black(name,id);
+                    lutemon = new Black(name);
                     break;
             }
 
