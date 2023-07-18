@@ -24,7 +24,15 @@
 - implement fragments
 #
 ### Changes:
-#### 07/16/2023
+#### 07/18/2023
+- fixed a bug not being able to switch states of more than one lutemon at a time (fixed by using id's to identify the checkboxes when removing them instead of int based identifier (which simialary to a list or array list doesn't work when the contents is changed; unique id is immune to this))
+- added dialogue verification for lutemon permanent deletion
+- added toast reminders when adding new lutemons and moving/changing states
+- resetting all radio buttons when buttons are pressed
+- added some battle arena functionalities:
+    * selection of fighters (move state to BATTLE)
+    * added textview in order to show text based information about the battle
+#### 07/17/2023
 - implemented load and save features for storage 
 - decided to apply lutemon mover in separate page instead of within fragments. this realization enables the use of enum 
 since fragment to fragment direct communication is no longer needed 
