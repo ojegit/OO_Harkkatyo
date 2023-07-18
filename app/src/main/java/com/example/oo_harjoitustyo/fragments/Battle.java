@@ -21,17 +21,75 @@ public class Battle extends Fragment {
 
     //
     private ArrayList<Lutemon> lutemons = new ArrayList<Lutemon>();
-    //
     private RadioGroup rg;
-
+    private View view;
     private Lutemon.LutemonState lutemonState = Lutemon.LutemonState.BATTLE;
-
+    //
 
     public Battle() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //update lutemons list
+        getAllLutemons(lutemonState);
+
+        //create checkboxes
+        if (lutemons.size() > 0) {
+            //clear old contents
+            rg = view.findViewById(R.id.rgCBBattle);
+            rg.removeAllViews();
+            rg.setOrientation(RadioGroup.VERTICAL);
+            for (Lutemon lm : lutemons) {
+                CheckBox cb = new CheckBox(view.getContext());
+                cb.setText(lm.getName() + "(" + lm.getColor() + ")");
+                cb.setTag(lm.getId()); //for unique identification
+                rg.addView(cb);
+            }
+        }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        view = inflater.inflate(R.layout.fragment_battle,
+                container, false);
+
+        //update lutemons list
+        getAllLutemons(lutemonState);
+
+        //create checkboxes
+        if (lutemons.size() > 0) {
+            rg = view.findViewById(R.id.rgCBBattle);
+            rg.removeAllViews();
+            rg.setOrientation(RadioGroup.VERTICAL);
+            for (Lutemon lm : lutemons) {
+                CheckBox cb = new CheckBox(view.getContext());
+                cb.setText(lm.getName() + "(" + lm.getColor() + ")");
+                cb.setTag(lm.getId()); //for unique identification
+                rg.addView(cb);
+            }
+        }
+
+        return view;
+    }
+
+    public ArrayList<Lutemon> getLutemons() {return lutemons;}
+    public RadioGroup getRG(){return rg;}
     public void getAllLutemons(Lutemon.LutemonState lutemonState) {
+        //clear old entries
+        lutemons.clear();
+
         int n = Storage.getInstance().getLutemons().size();
         if(n > 0) {
             Storage.getInstance().getLutemons().forEach((key,lutemon)->{
@@ -41,55 +99,5 @@ public class Battle extends Fragment {
                 }
             });
         }
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        //first time Home is accessed every available Lutemon should go here
-        if (getArguments() != null) {
-            lutemons = (ArrayList<Lutemon>) getArguments()
-                    .getSerializable(String.valueOf(serialVersionUID));
-        }
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_battle, container, false);
-
-        //update lutemons list
-        getAllLutemons(lutemonState);
-
-        //create checkboxes
-        if (lutemons.size() > 0) {
-            rg = view.findViewById(R.id.rgCBBattle);
-            rg.setOrientation(RadioGroup.HORIZONTAL);
-            for (Lutemon lm : lutemons) {
-                CheckBox cb = new CheckBox(view.getContext());
-                cb.setText(lm.getName() + "(" + lm.getColor() + ")");
-                rg.addView(cb);
-            }
-        }
-
-        // Inflate the layout for this fragment
-        return view;
-    }
-
-    public ArrayList<Lutemon> getLutemons() {return lutemons;}
-    public RadioGroup getRG(){return rg;}
-
-    private static final long serialVersionUID = 123456789L;
-
-    // Accept serialization from other fragments
-    public static Battle newInstance(ArrayList<Lutemon> move) {
-        Battle fragment = new Battle();
-        Bundle args = new Bundle();
-        args.putSerializable(String.valueOf(serialVersionUID), move);
-        fragment.setArguments(args);
-        return fragment;
     }
 }

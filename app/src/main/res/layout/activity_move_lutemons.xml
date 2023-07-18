@@ -104,12 +104,14 @@
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
                     android:text="Battle" />
+                <!--
                 <RadioButton
                     android:id="@+id/rbPerished"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
                     android:text="Perished" />
+                    -->
             </RadioGroup>
             <Button
                 android:id="@+id/btnMoveLutemons"

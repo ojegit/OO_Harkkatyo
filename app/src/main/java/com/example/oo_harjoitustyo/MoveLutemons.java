@@ -134,36 +134,45 @@ public class MoveLutemons extends AppCompatActivity {
             switch (rg.getCheckedRadioButtonId()) {
                 case R.id.rbHome:
                     //fragment = new Home();
-                    fragment = getSupportFragmentManager().findFragmentByTag("f0");
+                    //fragment = getSupportFragmentManager().findFragmentByTag("f0");
                     lutemonDest = Lutemon.LutemonState.HOME;
                     break;
                 case R.id.rbTrain:
                     //fragment = new Train();
-                    fragment = getSupportFragmentManager().findFragmentByTag("f1");
+                    //fragment = getSupportFragmentManager().findFragmentByTag("f1");
                     lutemonDest = Lutemon.LutemonState.TRAIN;
                     break;
                 case R.id.rbBattle:
                     //fragment = new Battle();
-                    fragment = getSupportFragmentManager().findFragmentByTag("f2");
+                    //fragment = getSupportFragmentManager().findFragmentByTag("f2");
                     lutemonDest = Lutemon.LutemonState.BATTLE;
                     break;
+                    /*
+                    //Don't allow moves to Perished! (Also disabled the button)
                 case R.id.rbPerished:
                     //fragment = new Perished();
-                    fragment = getSupportFragmentManager().findFragmentByTag("f3");
+                    //fragment = getSupportFragmentManager().findFragmentByTag("f3");
                     lutemonDest = Lutemon.LutemonState.PERISHED;
                     break;
+                     */
             }
 
             //check which checkboxes are checked
-            List <Integer> isChecked = new ArrayList<>();
+            List <String> isChecked = new ArrayList<>(); //keep track of selected lutemons' ids
             for (int i = 0; i < rgOnFragment.getChildCount(); i++) {
                 CheckBox cb = (CheckBox)rgOnFragment.getChildAt(i);
-                if (cb.isChecked()) {
-                    isChecked.add(i);
+                if (cb.isChecked() &&
+                    lutemonDest != lutemonCurr //don't allow moves to itself
+                ) {
+
 
                     //get id
                     Lutemon lutemonInFragment = lutemons.get(i);
                     String id = lutemonInFragment.getId();
+                    //note: cb tag and id should match!
+                    assert(id.equals(String.valueOf(cb.getTag())));
+                    //
+                    isChecked.add(id);
 
                     //change the state
                     Lutemon lutemonInStorage = Storage.getInstance().getLutemon(id);
@@ -177,23 +186,41 @@ public class MoveLutemons extends AppCompatActivity {
             }
 
             //clear
+            /*
+            NOTE the following will crash the program
+             */
             if(isChecked.size() > 0) {
+                rgOnFragment.clearCheck();
+                int id = -1;
+                //remove designated radio buttons
                 for (int i = 0; i < isChecked.size(); i++) {
-                    rgOnFragment.removeViewAt(i);
-                    lutemons.remove(i);
+                    for(int j = 0; j < rgOnFragment.getChildCount(); j++) {
+                        CheckBox cb = (CheckBox)rgOnFragment.getChildAt(j);
+                        if(cb.getTag().equals(isChecked.get(i))) {
+                            id = j;
+                            break;
+                        }
+                    }
+                    rgOnFragment.removeViewAt(id);
+                    //lutemons.remove(isChecked.get(i));
+                    //rgOnFragment.removeViewAt(isChecked.get(i)); //for multiple this doesn't work because the location changes
+                    //lutemons.remove(isChecked.get(i));
                 }
 
                 //announce transfer
-                Toast.makeText(getApplicationContext(),
+                Toast.makeText(view.getContext(),
                         "Moved " +isChecked.size()+
-                                " lutemons from + "
+                                " lutemons from "
                                 +lutemonCurr+" to "
-                                +lutemonDest, Toast.LENGTH_SHORT);
+                                +lutemonDest, Toast.LENGTH_SHORT).show();
             }
 
         } else {
             System.out.println("No data to be sent from MoveLutemons");
         }
+
+        //reset/clear the button
+        rg.clearCheck();
     }
 
     /*

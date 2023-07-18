@@ -2,16 +2,78 @@ package com.example.oo_harjoitustyo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class BattleArena extends AppCompatActivity {
+
+    private ArrayList<Lutemon> lutemons = new ArrayList<Lutemon>();
+    private RadioGroup rg;
+    private Lutemon.LutemonState lutemonState = Lutemon.LutemonState.BATTLE;
+    private Context context;
+
+    TextView tvBattleMsg;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //update lutemons list
+        getAllLutemons(lutemonState);
+
+        //create checkboxes
+        if (lutemons.size() > 0) {
+            //clear old contents
+            rg = findViewById(R.id.rgCBBattleArena);
+            rg.removeAllViews();
+            rg.setOrientation(RadioGroup.VERTICAL);
+            for (Lutemon lm : lutemons) {
+                CheckBox cb = new CheckBox(context);
+                cb.setText(lm.getName() + "(" + lm.getColor() + ")");
+                rg.addView(cb);
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_arena);
+        this.context = this;
+
+        //update lutemons list
+        getAllLutemons(lutemonState);
+
+        //create checkboxes
+        if (lutemons.size() > 0) {
+            //clear old contents
+            rg = findViewById(R.id.rgCBBattleArena);
+            rg.removeAllViews();
+            rg.setOrientation(RadioGroup.VERTICAL);
+            for (Lutemon lm : lutemons) {
+                CheckBox cb = new CheckBox(context);
+                cb.setText(lm.getName() + "(" + lm.getColor() + ")");
+                cb.setTag(lm.getId()); //for unique identification
+                rg.addView(cb);
+            }
+        }
+
+        tvBattleMsg = findViewById(R.id.tvBattleMsg);
+
+        findViewById(R.id.btnBattleEngage).setOnClickListener(view -> {
+            //check if at least two fighters have been selected
+
+
+            //engage fight
+            //fight(Lutemon lutemonA, Lutemon lutemonB);
+        });
     }
 
 
@@ -20,34 +82,76 @@ public class BattleArena extends AppCompatActivity {
         double avgDamage[] = {0,0};
         int expGained[] = {0,0};
 
+        //TBA: choose between turn based and until death:
+        //turn based combat and give the opponent the chance to give up/escape (then apply consequences and benefits for doing so)!
+
+        //reset text
+        tvBattleMsg.setText("");
+        String msg = "";
 
         //Do combat until one of them perishes aka health <= 0
         do {
+            //
             noRounds++;
+            if(noRounds>1) {
+                msg = "\nROUND " +noRounds+ "\n----------------\n";
+            } else {
+                msg = "ROUND " +noRounds+ "\n----------------\n";
+            }
+            tvBattleMsg.append(msg+"\n");
+            System.out.println(msg);
+            //
 
-            System.out.println(lutemonA.toString());
-            System.out.println(lutemonB.toString());
+            //Print stats
+            msg = lutemonA.toString();
+            tvBattleMsg.append(msg+"\n");
+            System.out.println(msg);
+
+            msg = lutemonB.toString();
+            tvBattleMsg.append(msg+"\n");
+            System.out.println(msg);
+            //
 
             //A attacks B
-            System.out.println(lutemonA.color+"("+lutemonA.name+") attacks "+lutemonB.color+ "("+lutemonB.name+")");
-            lutemonB.defence(lutemonA);
+            msg = lutemonA.color+"("+lutemonA.name+") attacks "+lutemonB.color+ "("+lutemonB.name+")";
+            tvBattleMsg.append(msg+"\n");
+            System.out.println(msg);
 
+            lutemonB.defence(lutemonA);
             avgDamage[0]+=lutemonA.getAttack();
+            //
 
             //check B's health
             if(lutemonB.health > 0) {
-                System.out.println(lutemonA.color+"("+lutemonA.name+") manages to escape death.");
+                //
+                msg = lutemonA.color+"("+lutemonA.name+") manages to escape death.";
+                tvBattleMsg.append(msg+"\n");
+                System.out.println(msg);
+                //
 
-                System.out.println(lutemonB.toString());
-                System.out.println(lutemonA.toString());
+                //Print stats
+                msg = lutemonB.toString();
+                tvBattleMsg.append(msg+"\n");
+                System.out.println(msg);
+
+                msg = lutemonA.toString();
+                tvBattleMsg.append(msg+"\n");
+                System.out.println(msg);
+                //
 
                 //B attacks A
-                System.out.println(lutemonB.color+"("+lutemonB.name+") attacks "+lutemonA.color+ "("+lutemonA.name+")");
+                msg = lutemonB.color+"("+lutemonB.name+") attacks "+lutemonA.color+ "("+lutemonA.name+")";
+                tvBattleMsg.append(msg+"\n");
+                System.out.println(msg);
+
                 lutemonA.defence(lutemonB);
+                //
 
                 //check A's health
                 if(lutemonA.health > 0) {
-                    System.out.println(lutemonB.color+"("+lutemonB.name+") manages to escape death.");
+                    msg = lutemonB.color+"("+lutemonB.name+") manages to escape death.";
+                    tvBattleMsg.append(msg+"\n");
+                    System.out.println(msg);
                 } else {
                     //A is dead, exit
                     //set A to DEAD status
@@ -55,7 +159,9 @@ public class BattleArena extends AppCompatActivity {
                     //B gains experience for killing A
                     expGained[1]++;
 
-                    System.out.println("A IS DEAD, B WON!");
+                    msg = "A IS DEAD, B WON!";
+                    tvBattleMsg.append(msg+"\n");
+                    System.out.println(msg);
                     //break;
                 }
             } else {
@@ -65,7 +171,9 @@ public class BattleArena extends AppCompatActivity {
                 //A gains experience for killing B
                 expGained[0]++;
 
-                System.out.println("B IS DEAD, A WON");
+                msg = "B IS DEAD, A WON";
+                tvBattleMsg.append(msg+"\n");
+                System.out.println(msg);
                 //break;
             }
 
@@ -76,10 +184,27 @@ public class BattleArena extends AppCompatActivity {
             avgDamage[i] = avgDamage[i]/(1.0*noRounds);
         }
 
-        System.out.println("Combat results:");
-        System.out.println("No rounds: " +noRounds);
-        System.out.println("Average damage done per combatant: " +avgDamage);
+        msg = "Combat results:\nNo rounds: " +noRounds+"\nAverage damage done per combatant: " +avgDamage;
+        tvBattleMsg.append(msg+"\n");
+        System.out.println(msg);
+    }
 
+    public ArrayList<Lutemon> getLutemons() {return lutemons;}
+    public RadioGroup getRG(){return rg;}
+
+    public void getAllLutemons(Lutemon.LutemonState lutemonState) {
+        //clear old entries
+        lutemons.clear();
+
+        int n = Storage.getInstance().getLutemons().size();
+        if(n > 0) {
+            Storage.getInstance().getLutemons().forEach((key,lutemon)->{
+                //add only those with the wanted LutemonState
+                if(lutemon.getLutemonState() == lutemonState) {
+                    lutemons.add(lutemon);
+                }
+            });
+        }
     }
 
 

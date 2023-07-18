@@ -55,14 +55,19 @@ public class AddLutemon extends AppCompatActivity {
             //add new object
             Storage.getInstance().addLutemon(lutemon);
 
-            //notify user about the event
-            String msg = lutemon.getColor() +" Lutemon generated.";
 
-            //TOAST NOT WORKING!
-            //Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
-            //Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT);
+            String msg = lutemon.getColor()+
+                    " Lutemon named '"
+                    +lutemon.getName()+
+                    "' generated.";
+
+            //announce transfer
+            Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();
             System.out.println(msg);
 
+            //clear edits
+            et.setText("");
+            rg.clearCheck();
         });
     }
 
