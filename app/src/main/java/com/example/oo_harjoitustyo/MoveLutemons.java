@@ -186,9 +186,6 @@ public class MoveLutemons extends AppCompatActivity {
             }
 
             //clear
-            /*
-            NOTE the following will crash the program
-             */
             if(isChecked.size() > 0) {
                 rgOnFragment.clearCheck();
                 int id = -1;

@@ -4,10 +4,8 @@
 
 ### Not done:
 - save/load statistics
-- combat graphics (tip: use the fixed images here since they're already included in the objects)
 - collect statistics (e.g no days trained, no deaths, damage done, no exp, no kills, no times trained etc; do all of this color specific)
 - print graphs of statistics 
-- restore perished lutemons
 - graph statistics (e.g AnyChart package)
 - save/load statistics on load
 - randomization
@@ -22,8 +20,13 @@
 - implement recycleview
 - add pictures to each lutemon (currently fixed, but different nonetheless)
 - implement fragments
+- combat graphics (tip: use the fixed images here since they're already included in the objects)
+- restore perished lutemons
 #
 ### Changes:
+#### 07/19/2023
+- added recycle view that is capable of showing multiple layouts to battle display
+- added revive button to list view: when lutemon is at PERISHED state then a button to revive lutemon back to max health becomes visible; the revived lutemon is moved back HOME
 #### 07/18/2023
 - fixed a bug not being able to switch states of more than one lutemon at a time (fixed by using id's to identify the checkboxes when removing them instead of int based identifier (which simialary to a list or array list doesn't work when the contents is changed; unique id is immune to this))
 - added dialogue verification for lutemon permanent deletion

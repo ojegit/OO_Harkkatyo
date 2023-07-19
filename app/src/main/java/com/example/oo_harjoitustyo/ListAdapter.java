@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ListAdapter extends RecyclerView.Adapter<ListHolder> implements Serializable  {
+public class ListAdapter extends RecyclerView.Adapter<ListHolder>   { //implements Serializable
 
     private Context context;
     private ArrayList<Lutemon> lutemons = new ArrayList<>();
@@ -34,6 +34,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder> implements Ser
         return new ListHolder(LayoutInflater.from(context)
                 .inflate(R.layout.list_item, parent, false));
     }
+
+
 
     @Override
     public void onBindViewHolder(@NonNull ListHolder holder, int position) {
@@ -58,11 +60,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder> implements Ser
 
 
 
-
-
+        //
         //buttons' functionality
+        //
+        int pos = holder.getAdapterPosition();
+
+        //Delete
         holder.ivDelete.setOnClickListener(view -> {
-            int pos = holder.getAdapterPosition();
             String id = String.valueOf(lutemons.get(pos).getId());
             String colorName = lutemons.get(pos).getName()+
                     "("+lutemons.get(pos).getColor()+")";
@@ -89,6 +93,45 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder> implements Ser
             //
 
         });
+
+        //Revive
+        if(lutemons.get(pos).getHealth() <= 0) {
+            //make visible if perished and add listener
+            holder.ivRevive.setVisibility(View.VISIBLE);
+
+            holder.ivRevive.setOnClickListener(view -> {
+                String id = String.valueOf(lutemons.get(pos).getId());
+                String colorName = lutemons.get(pos).getName() +
+                        "(" + lutemons.get(pos).getColor() + ")";
+                System.out.println("Restored Lutemon " + colorName);
+
+                new AlertDialog.Builder(((Activity)context))
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Revive")
+                        .setMessage("Are you sure you want to revive '"+colorName+"'?")
+                        .setPositiveButton("Yes", (dialog, which) -> {
+                            Storage.getInstance().removeById(id);
+                            lutemons.get(pos).resetHealth();
+                            lutemons.get(pos).setLutemonState(Lutemon.LutemonState.HOME);
+
+                            System.out.println("Restored '"+colorName+"' Lutemon!");
+
+                            //hide button
+                            holder.ivRevive.setVisibility(View.GONE);
+
+                            notifyItemChanged(pos);
+                        })
+                        .setNegativeButton("No", (dialog, which) -> {
+                            //do nothing
+                            System.out.println("Did not delete anything!");
+                        })
+                        .show();
+
+            });
+        } else {
+            //remove listener if exists?
+        }
+
     }
 
 
