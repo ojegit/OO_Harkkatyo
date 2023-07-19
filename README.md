@@ -2,6 +2,11 @@
 
 ### TBA: add scoring table here
 
+### Known bugs:
+- Sometimes PERISHED state is not displayed in lutemon list view even though this is the case and it is registered by the move lutemons view
+- cannot move more than one lutemon at a time between states/locations (`FIXED`)
+- lutemons' stats information does not fit completely into left/right layout in battle view
+
 ### Not done:
 - save/load statistics
 - collect statistics (e.g no days trained, no deaths, damage done, no exp, no kills, no times trained etc; do all of this color specific)
