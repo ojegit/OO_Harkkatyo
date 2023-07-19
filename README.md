@@ -17,6 +17,12 @@
 - unit tests
 - documentation and class diagrams to `/documentation` and `/documentation/ht.xmi`!
 - finally: review points achieved, check for bugs and most importantly make sure the program works!
+- training button at train move view
+- restore also in perished move view
+- when selecting lutemons to battle one is able to choose their order (aka there's a listener in the checkboxes that in addition to registering order also notifies the user that only 2 can be selected at a time or the order 
+is selected afterwards (no listener required))
+- turn based combat (OPTIONAL, request more points)
+- make it possible to load lutemon image from file (OPTIONAL, request more points)
 ### Done: 
 - main view
 - a) loading of objects in different fragments based or b) state or information passing between fragment
