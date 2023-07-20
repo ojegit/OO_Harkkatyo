@@ -1,6 +1,22 @@
 # Object oriented programming: final project
 
-### TBA: add scoring table here
+### Realized features for scoring
+|Vaatimus|Tehty
+|-|-
+|RecycleView|x
+|Lutemonilla on kuva|x
+|Taistelu on visualisoitu|x
+|Tilastot|
+|Kuolema pois|x
+|Satunnaisuus|
+|Fragmentit|x
+|Tietojen tallennus ja lataus|
+|Tilastojen visualisointi|
+|Lutemonin poisto pysyvästi (NEW)|x
+|Kuvan lataaminen tiedostosta (NEW)|
+|Tilastotietojen tallennus (NEW)|
+|Vuoropohjainen taistelu (NEW)|
+|Taistelusta voi poistua kesken kaiken (NEW)|
 
 ### Known bugs:
 - Sometimes PERISHED state is not displayed in lutemon list view even though this is the case and it is registered by the move lutemons view
