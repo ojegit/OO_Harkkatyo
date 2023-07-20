@@ -6,7 +6,7 @@
 |RecycleView|x
 |Lutemonilla on kuva|x
 |Taistelu on visualisoitu|x
-|Tilastot|
+|Tilastot|x
 |Kuolema pois|x
 |Satunnaisuus|
 |Fragmentit|x
@@ -25,7 +25,7 @@
 
 ### Not done:
 - save/load statistics
-- collect statistics (e.g no days trained, no deaths, damage done, no exp, no kills, no times trained etc; do all of this color specific)
+- collect more statistics 
 - print graphs of statistics 
 - graph statistics (e.g AnyChart package)
 - save/load statistics on load
@@ -40,6 +40,7 @@ is selected afterwards (no listener required))
 - turn based combat (OPTIONAL, request more points)
 - make it possible to load lutemon image from file (OPTIONAL, request more points)
 ### Done: 
+- collect statistics
 - main view
 - a) loading of objects in different fragments based or b) state or information passing between fragment
 - fragment functionality /w viewpager2 and tab
@@ -51,9 +52,13 @@ is selected afterwards (no listener required))
 - restore perished lutemons
 #
 ### Changes:
+#### 07/20/2023
+- those lutemons that perish in battle are now removed from the list of fighters immediately after the fight concludes (in order to revive them refer to the list view)
+- added some statistics and some of it is shown along with the lutemon list such as no wins, no lossses, and no of revives
+- added checkbox listeners to battle view: it's possible to only select two AND their sequence determines combat order
 #### 07/19/2023
 - added recycle view that is capable of showing multiple layouts to battle display
-- added revive button to list view: when lutemon is at PERISHED state then a button to revive lutemon back to max health becomes visible; the revived lutemon is moved back HOME
+- added revive button (a lightning icon) to list view: when lutemon is at PERISHED state then a button to revive lutemon back to max health becomes visible; the revived lutemon is automatically moved back HOME
 #### 07/18/2023
 - fixed a bug not being able to switch states of more than one lutemon at a time (fixed by using id's to identify the checkboxes when removing them instead of int based identifier (which simialary to a list or array list doesn't work when the contents is changed; unique id is immune to this))
 - added dialogue verification for lutemon permanent deletion
