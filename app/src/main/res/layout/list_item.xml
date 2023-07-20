@@ -104,6 +104,45 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.823" />
 
+        <TextView
+            android:id="@+id/tvRevived"
+            android:layout_width="100dp"
+            android:layout_height="15dp"
+            android:text="TextView"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.777"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.294" />
+
+        <TextView
+            android:id="@+id/tvWins"
+            android:layout_width="100dp"
+            android:layout_height="15dp"
+            android:text="TextView"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.777"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.47" />
+
+        <TextView
+            android:id="@+id/tvLosses"
+            android:layout_width="100dp"
+            android:layout_height="15dp"
+            android:text="TextView"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.777"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.647" />
+
         <ImageView
             android:id="@+id/ivDelete"
             android:layout_width="wrap_content"

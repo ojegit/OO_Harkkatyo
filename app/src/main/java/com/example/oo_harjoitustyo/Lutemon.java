@@ -41,17 +41,16 @@ public class Lutemon implements Serializable {
     private static int idCounter;
 
     //bookkeeping
-    public int noWins; //number of winds (health > 0 after the battle concludes)
-    public int noLosses; //number of losses (health <= after the battle concludes)
-    public int noTrained; //number of times trained
-    public int amountOfExperienceTrained; //experience accrued from training
-    public String createdTimestamp; //timestamp when instance was created
-    public String removedTimestamp; //timestamp when instance was deleted (if kept alive then may never be deleted)
-    public int noAttacks;
-    public int noDefences;
-    public int totalDamageDone;
-    public int noTimesReset;
-
+    private int noWins; //number of winds (health > 0 after the battle concludes)
+    private int noLosses; //number of losses (health <= after the battle concludes)
+    private int noTrained; //number of times trained
+    private int amountOfExperienceTrained; //experience accrued from training
+    private int amountOfExperienceFought; //experience accrued from fighting
+    private int noAttacks;
+    private int noDefences;
+    private int totalDamageDone;
+    private int noTimesRevived;
+    private int noRoundsFought;
     public int noLastOpponentsSaved;
     public ArrayList<Lutemon> lastOpponents;
     //
@@ -91,54 +90,65 @@ public class Lutemon implements Serializable {
     }
 
     public int attack(){return -1;}
-    public int getNumberOfCreatedLutemons(){return -1;}
 
+    //
+    public int getNumberOfCreatedLutemons(){return -1;}
     public int getImageSrc() {
         return imageSrc;
     }
-
     public void setImageSrc(int imageSrc) {
         this.imageSrc = imageSrc;
     }
-
     public String getName() {
         return name;
     }
-
     public Color getColor() {
         return color;
     }
-
     public int getAttack() {
         return attack;
     }
-
     public int getDefence() {
         return defence;
     }
-
     public int getExperience() {
         return experience;
     }
-
-
     public int getHealth() {
         return health;
     }
-
     public int getMaxHealth() {
         return maxHealth;
     }
-
     public String getId() {
         return id;
     }
-
-
     public static int getIdCounter() {return idCounter;}
+    //
 
+    //stats
 
-
+    public int getNoRoundsFought() {return noRoundsFought;}
+    public void setNoRoundsFought(int noRoundsFought) {this.noRoundsFought = noRoundsFought;}
+    public int getAmountOfExperienceFought() {    return amountOfExperienceFought;}
+    public void setAmountOfExperienceFought(int amountOfExperienceFought) {this.amountOfExperienceFought = amountOfExperienceFought;}
+    public int getNoWins() {return noWins;}
+    public void setNoWins(int noWins) {this.noWins = noWins;}
+    public int getNoLosses() {return noLosses;}
+    public void setNoLosses(int noLosses) {this.noLosses = noLosses;}
+    public int getNoTrained() {return noTrained;}
+    public void setNoTrained(int noTrained) {this.noTrained = noTrained;}
+    public int getAmountOfExperienceTrained() {return amountOfExperienceTrained;}
+    public void setAmountOfExperienceTrained(int amountOfExperienceTrained) {this.amountOfExperienceTrained = amountOfExperienceTrained;}
+    public int getNoAttacks() {return noAttacks;}
+    public void setNoAttacks(int noAttacks) {this.noAttacks = noAttacks;}
+    public int getNoDefences() {return noDefences;}
+    public void setNoDefences(int noDefences) {this.noDefences = noDefences;}
+    public int getTotalDamageDone() {return totalDamageDone;}
+    public void setTotalDamageDone(int totalDamageDone) {this.totalDamageDone = totalDamageDone;}
+    public int getNoTimesRevived() {return noTimesRevived;}
+    public void setNoTimesRevived(int noTimesRevived) {this.noTimesRevived = noTimesRevived;}
+    //
 
     @Override
     public String toString(){

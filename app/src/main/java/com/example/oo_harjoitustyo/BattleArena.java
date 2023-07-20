@@ -8,12 +8,17 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class BattleArena extends AppCompatActivity {
 
@@ -24,6 +29,9 @@ public class BattleArena extends AppCompatActivity {
     private Context context;
     private RecyclerView recyclerView;
     private BattleInfoAdapter battleInfoAdapter;
+    private int numberOfCheckboxesChecked;
+
+    private ArrayList<Lutemon> isCheckedList;
 
     TextView tvBattleMsg;
 
@@ -35,7 +43,10 @@ public class BattleArena extends AppCompatActivity {
         this.battleMsgs = new ArrayList<BattleMsgContainer>();
 
         this.lutemonState = Lutemon.LutemonState.BATTLE;
+        this.numberOfCheckboxesChecked = 0;
+        this.isCheckedList = new ArrayList<>();
     }
+
 
     @Override
     public void onResume() {
@@ -50,11 +61,55 @@ public class BattleArena extends AppCompatActivity {
             rg = findViewById(R.id.rgCBBattleArena);
             rg.removeAllViews();
             rg.setOrientation(RadioGroup.VERTICAL);
+
             for (Lutemon lm : lutemons) {
                 CheckBox cb = new CheckBox(context);
                 cb.setText(lm.getName() + "(" + lm.getColor() + ")");
                 cb.setTag(lm.getId()); //for unique identification
                 rg.addView(cb);
+
+                //add listener to checkbox
+                cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked && numberOfCheckboxesChecked >= 2) {
+                            cb.setChecked(false);
+                        } else {
+                            if (isChecked) {
+                                numberOfCheckboxesChecked++;
+
+                                //check if checkbox already added to list (HashMap cannot be used because the order is important!)
+                                int contains = 0;
+                                for(Lutemon lm : isCheckedList) {
+                                    if(lm.getId().equals(cb.getTag())) {
+                                        contains++;
+                                        break;
+                                    }
+                                }
+                                if(contains == 0) { isCheckedList.add(lm);}
+
+                                Toast.makeText(context, "Selected "+cb.getText()+ ", "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
+                            } else {
+                                numberOfCheckboxesChecked--;
+                                //remove unchecked from the list
+                                ListIterator<Lutemon> it = isCheckedList.listIterator();
+                                int i = 0;
+                                while(it.hasNext()) {
+                                    Lutemon tmp = it.next();
+                                    if(tmp.getId().equals(cb.getTag())) {
+                                        it.remove();
+                                        break;
+                                    }
+                                }
+                                Toast.makeText(context, "Unckecked, "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+
+                    }
+                });
+
+
             }
         }
     }
@@ -65,12 +120,13 @@ public class BattleArena extends AppCompatActivity {
         setContentView(R.layout.activity_battle_arena);
         this.context = this;
 
+        System.out.println("isCheckedList: " + isCheckedList.toString());
+
         recyclerView = findViewById(R.id.rvBattle);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         battleInfoAdapter = new BattleInfoAdapter(this, battleMsgs);
         recyclerView.setAdapter(battleInfoAdapter);
-
 
 
         //update lutemons list
@@ -87,6 +143,47 @@ public class BattleArena extends AppCompatActivity {
                 cb.setText(lm.getName() + "(" + lm.getColor() + ")");
                 cb.setTag(lm.getId()); //for unique identification
                 rg.addView(cb);
+
+                //add listener to checkbox
+                cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked && numberOfCheckboxesChecked >= 2) {
+                            cb.setChecked(false);
+                        } else {
+                            if (isChecked) {
+                                numberOfCheckboxesChecked++;
+
+                                //check if checkbox already added to list (HashMap cannot be used because the order is important!)
+                                int contains = 0;
+                                for(Lutemon lm : isCheckedList) {
+                                    if(lm.getId().equals(cb.getTag())) {
+                                        contains++;
+                                        break;
+                                    }
+                                }
+                                if(contains == 0) { isCheckedList.add(lm);}
+
+                                Toast.makeText(context, "Selected "+cb.getText()+ ", "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
+                            } else {
+                                numberOfCheckboxesChecked--;
+                                //remove unchecked from the list
+                                ListIterator<Lutemon> it = isCheckedList.listIterator();
+                                int i = 0;
+                                while(it.hasNext()) {
+                                    Lutemon tmp = it.next();
+                                    if(tmp.getId().equals(cb.getTag())) {
+                                        it.remove();
+                                        break;
+                                    }
+                                }
+                                Toast.makeText(context, "Unckecked, "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                });
+
+
             }
         }
 
@@ -97,6 +194,7 @@ public class BattleArena extends AppCompatActivity {
 
             //TBA: add a number in which order the checkboxes have been checked!
 
+            /*
             List<Integer> isChecked = new ArrayList<>(); //keep track of selected lutemons' ids
             //List<String> isChecked = new ArrayList<>(); //keep track of selected lutemons' ids
             //
@@ -119,17 +217,31 @@ public class BattleArena extends AppCompatActivity {
                     break;
                 }
             }
+             */
 
-            //clear selected
-            rg.clearCheck();
+            if(isCheckedList.size() == 2) {
+
 
             //check if at least two fighters have been selected
-            if(isChecked.size() == 2) {
+
                 //engage fight
-                fight(lutemons.get(0), lutemons.get(1));
+                fight(isCheckedList.get(0), isCheckedList.get(1));
 
                 //notify RecycleView of the new data
                 battleInfoAdapter.notifyDataSetChanged();
+
+                //clear selected and perished
+                for(int i=0; i<rg.getChildCount(); i++) {
+                    CheckBox cb = (CheckBox)rg.getChildAt(i);
+                    if(cb.isChecked()){ cb.toggle(); }
+                }
+
+
+
+                //clear checked
+                isCheckedList.clear();
+            } else {
+                Toast.makeText(context, "Please, select 2 Lutemons before starting a fight!", Toast.LENGTH_SHORT).show();
             }
 
 
@@ -143,7 +255,6 @@ public class BattleArena extends AppCompatActivity {
     public void fight(Lutemon lutemonA, Lutemon lutemonB) {
         int noRounds = 0;
         double avgDamage[] = {0,0};
-        int expGained[] = {0,0};
 
         //TBA: choose between turn based and until death:
         //turn based combat and give the opponent the chance to give up/escape (then apply consequences and benefits for doing so)!
@@ -186,6 +297,9 @@ public class BattleArena extends AppCompatActivity {
 
             lutemonB.defence(lutemonA);
             avgDamage[0]+=lutemonA.getAttack();
+
+            lutemonA.setNoAttacks(lutemonA.getNoAttacks() + 1);
+            lutemonB.setNoDefences(lutemonB.getNoDefences() + 1);
             //
 
             //check B's health
@@ -216,6 +330,11 @@ public class BattleArena extends AppCompatActivity {
                 System.out.println(msg);
 
                 lutemonA.defence(lutemonB);
+
+                avgDamage[1]+=lutemonB.getAttack();
+
+                lutemonB.setNoAttacks(lutemonB.getNoAttacks() + 1);
+                lutemonA.setNoDefences(lutemonA.getNoDefences() + 1);
                 //
 
                 //check A's health
@@ -229,9 +348,11 @@ public class BattleArena extends AppCompatActivity {
                     //set A to DEAD status
 
                     //B gains experience for killing A
-                    expGained[1]++;
+                    lutemonB.setAmountOfExperienceFought(lutemonB.getAmountOfExperienceFought() + 1);
+                    lutemonB.setNoWins(lutemonB.getNoWins() + 1);
+                    lutemonA.setNoLosses(lutemonA.getNoLosses() + 1);
 
-                    msg = "A IS DEAD, B WON!";
+                    msg = lutemonA.color+"("+lutemonA.name+") IS DEAD, "+lutemonB.color+"("+lutemonB.name+")  WON!";
                     //tvBattleMsg.append(msg+"\n");
                     lutemonA.setLutemonState(Lutemon.LutemonState.PERISHED);
                     battleMsgs.add(new BattleMsgContainer(msg, BattleMsgContainer.MessageType.TEXT, lutemonA));
@@ -251,9 +372,11 @@ public class BattleArena extends AppCompatActivity {
                 //set B to DEAD status
 
                 //A gains experience for killing B
-                expGained[0]++;
+                lutemonA.setAmountOfExperienceFought(lutemonA.getAmountOfExperienceFought() + 1);
+                lutemonA.setNoWins(lutemonA.getNoWins() + 1);
+                lutemonB.setNoLosses(lutemonB.getNoLosses() + 1);
 
-                msg = "B IS DEAD, A WON";
+                msg = lutemonB.color+"("+lutemonB.name+") IS DEAD, "+lutemonA.color+"("+lutemonA.name+")  WON!";
                 //tvBattleMsg.append(msg+"\n");
 
                 lutemonB.setLutemonState(Lutemon.LutemonState.PERISHED);
@@ -265,15 +388,34 @@ public class BattleArena extends AppCompatActivity {
 
         } while(lutemonA.health > 0 && lutemonB.health > 0);
 
-        //calculate average damage
-        for(int i = 0; i<2; i++) {
-            avgDamage[i] = avgDamage[i]/(1.0*noRounds);
-        }
 
-        msg = "Combat results:\nNo rounds: " +noRounds+"\nAverage damage done per combatant: " +avgDamage;
+        msg = "Combat results:\nNo rounds: " +noRounds+
+                "\nDamage done per combatant: "
+                +lutemonA.color+"("+lutemonA.name+"): " +avgDamage[0]+ " and "
+                +lutemonB.color+"("+lutemonB.name+"): "+avgDamage[1];
+
         //tvBattleMsg.append(msg+"\n");
         battleMsgs.add(new BattleMsgContainer(msg, BattleMsgContainer.MessageType.TEXT, null));
         System.out.println(msg);
+
+        //tally up the results
+        lutemonA.setTotalDamageDone(lutemonA.getTotalDamageDone() + (int)avgDamage[0]);
+        lutemonB.setTotalDamageDone(lutemonB.getTotalDamageDone() + (int)avgDamage[1]);
+        lutemonA.setNoRoundsFought(lutemonA.getNoRoundsFought() + noRounds);
+        lutemonB.setNoRoundsFought(lutemonB.getNoRoundsFought() + noRounds);
+        //
+
+
+        //clean checklist
+        for(Lutemon lm : lutemons) {
+            for(int j=0; j<rg.getChildCount(); j++) {
+                CheckBox cb = (CheckBox)rg.getChildAt(j);
+                if(cb.getTag().equals(lm.getId()) && lm.getHealth() <= 0) {
+                    rg.removeViewAt(j);
+                }
+            }
+        }
+
     }
 
     public ArrayList<Lutemon> getLutemons() {return lutemons;}

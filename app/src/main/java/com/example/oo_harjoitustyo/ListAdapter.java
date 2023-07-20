@@ -49,7 +49,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder>   { //implemen
         holder.tvDefense.setText("Puolustus: " +String.valueOf(lutemons.get(position).getDefence()));
         holder.tvHealth.setText("Elämä: " +String.valueOf(lutemons.get(position).getHealth())+" / " +
                                            String.valueOf(lutemons.get(position).getMaxHealth()));
-        holder.tvExperience.setText("Kokemus: " +String.valueOf(lutemons.get(position).getExperience()));
+        //holder.tvExperience.setText("Kokemus: " +String.valueOf(lutemons.get(position).getExperience()));
+        holder.tvExperience.setText("Kokemus: "
+                +String.valueOf(lutemons.get(position).getAmountOfExperienceTrained() + lutemons.get(position).getAmountOfExperienceFought()));
+        holder.tvRevived.setText("Elvytetty: "+String.valueOf(lutemons.get(position).getNoTimesRevived()));
+        holder.tvWins.setText("Voitot: "+String.valueOf(lutemons.get(position).getNoWins()));
+        holder.tvLosses.setText("Tappiot: "+String.valueOf(lutemons.get(position).getNoLosses()));
 
         //date format
         SimpleDateFormat DateFormat = new SimpleDateFormat("MM/dd/yyyy, HH:mm");
@@ -110,9 +115,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder>   { //implemen
                         .setTitle("Revive")
                         .setMessage("Are you sure you want to revive '"+colorName+"'?")
                         .setPositiveButton("Yes", (dialog, which) -> {
-                            Storage.getInstance().removeById(id);
                             lutemons.get(pos).resetHealth();
                             lutemons.get(pos).setLutemonState(Lutemon.LutemonState.HOME);
+                            lutemons.get(pos).setNoTimesRevived(lutemons.get(pos).getNoTimesRevived()+1);
 
                             System.out.println("Restored '"+colorName+"' Lutemon!");
 
@@ -128,8 +133,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder>   { //implemen
                         .show();
 
             });
-        } else {
-            //remove listener if exists?
         }
 
     }
