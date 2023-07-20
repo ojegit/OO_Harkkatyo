@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.oo_harjoitustyo.Lutemon;
 import com.example.oo_harjoitustyo.R;
 import com.example.oo_harjoitustyo.Storage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Train extends Fragment {
@@ -51,9 +53,14 @@ public class Train extends Fragment {
         }
     }
 
+    public void train() {
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 
@@ -63,6 +70,54 @@ public class Train extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_train,
                 container, false);
+
+        //train button functionality
+        view.findViewById(R.id.btnTrain).setOnClickListener(view->{
+            //train only those that have been selected
+            //accumulate statistics: noTrained and amountOfExperienceTrained
+            if(lutemons.size() > 0) {
+                for (int i = 0; i < rg.getChildCount(); i++) {
+                    CheckBox cb = (CheckBox) rg.getChildAt(i);
+                    if (cb.isChecked()) {
+
+                        //get id
+                        Lutemon lutemonInFragment = lutemons.get(i);
+                        String id = lutemonInFragment.getId();
+                        //note: cb tag and id should match!
+                        assert (id.equals(String.valueOf(cb.getTag())));
+                        //
+
+                        //do the training
+                        lutemonInFragment.setAmountOfExperienceTrained(
+                                lutemonInFragment.getAmountOfExperienceTrained() + 2
+                                //
+                                //note: when adding more than one point at a time it is necessary to check f
+                                //or level ups later because the current mechanism only checks for gaps!
+                                //
+                        );
+                        lutemonInFragment.setNoTrained(lutemonInFragment.getNoTrained() + 1);
+
+
+                        //check level up eligibility
+                        int noLvlUps = lutemonInFragment.checkLevelUp(2);
+                        if (noLvlUps > 0) {
+                            //announce if lutemon got a level up
+                            Toast.makeText(getContext(),
+                                    lutemonInFragment.getName() + "(" + lutemonInFragment.getColor() + ") got " + noLvlUps + " level up(s)!",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                        //uncheck
+                        if (cb.isChecked()) {
+                            cb.toggle();
+                        }
+                    }
+                }
+            } else {
+                System.out.println("No Lutemons to be trained!");
+            }
+
+        });
 
         //update lutemons list
         getAllLutemons(lutemonState);

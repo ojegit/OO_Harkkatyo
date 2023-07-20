@@ -1,11 +1,24 @@
 # Object oriented programming: final project
 
+### Future development possibilities:
+- additional stats such as armor, dexterity etc. 
+- user profiles
+- concept of time
+- turn based combat
+- wounds heal over time
+- equipment
+- loot
+- crafting
+- escape from battle
+- spells and buffs
+
 ### Realized features for scoring
 |Vaatimus|Tehty
 |-|-
+|Perusvaatimukset|x
 |RecycleView|x
 |Lutemonilla on kuva|x
-|Taistelu on visualisoitu|x
+|Taistelu on visualisoitu|
 |Tilastot|x
 |Kuolema pois|x
 |Satunnaisuus|
@@ -24,6 +37,8 @@
 - lutemons' stats information does not fit completely into left/right layout in battle view
 
 ### Not done:
+- combat graphics (animations need to be used for full points; lighter version with recycle view has already been implemented)
+- restore perished lutemons
 - save/load statistics
 - collect more statistics 
 - print graphs of statistics 
@@ -48,11 +63,14 @@ is selected afterwards (no listener required))
 - implement recycleview
 - add pictures to each lutemon (currently fixed, but different nonetheless)
 - implement fragments
-- combat graphics (tip: use the fixed images here since they're already included in the objects)
-- restore perished lutemons
+
 #
 ### Changes:
 #### 07/20/2023
+- battle recycle views and layouts need to be adjusted and aligned properly; adding simple animations when each combatant is introduced
+- began implementing charts for statistics (groupings by color have to be performed separately or a common DB used to collect overall stats that maintain information even after deleting lutemons)
+- training mode completed
+- experience earned either from combat or training will grant a level up (atm in every 2 points) giving 2 points of attack and 1 point of defence
 - those lutemons that perish in battle are now removed from the list of fighters immediately after the fight concludes (in order to revive them refer to the list view)
 - added some statistics and some of it is shown along with the lutemon list such as no wins, no lossses, and no of revives
 - added checkbox listeners to battle view: it's possible to only select two AND their sequence determines combat order

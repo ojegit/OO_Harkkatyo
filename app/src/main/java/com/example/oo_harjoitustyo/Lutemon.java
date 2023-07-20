@@ -40,9 +40,12 @@ public class Lutemon implements Serializable {
     //no instances
     private static int idCounter;
 
+    private int lastLevelUp; //exp when last level up happened
+    private int noLevelUps; //no of level ups so far
+
     //bookkeeping
-    private int noWins; //number of winds (health > 0 after the battle concludes)
-    private int noLosses; //number of losses (health <= after the battle concludes)
+    private int noWins; //number of wins
+    private int noLosses; //number of losses
     private int noTrained; //number of times trained
     private int amountOfExperienceTrained; //experience accrued from training
     private int amountOfExperienceFought; //experience accrued from fighting
@@ -82,6 +85,35 @@ public class Lutemon implements Serializable {
         this.health = netHealth;
     }
 
+
+    public int checkLevelUp(int expGap) {
+        int totalExp = getAmountOfExperienceFought() + getAmountOfExperienceTrained();
+
+        //check exp gap aka if level up is possible and make sure
+        //they're only given once for the same exp
+        if(this.lastLevelUp != totalExp) {
+            //no level ups to be applied since last update
+            int noLvls = (int)Math.floor((totalExp - this.lastLevelUp) / expGap);
+            //
+            for(int i = 0; i < noLvls; i++) {
+                //level up effects
+                this.attack += 2;
+                this.defence += 1;
+                //
+
+                //accumulate no level ups
+                this.noLevelUps++;
+            }
+
+            //update last level up
+            this.lastLevelUp = totalExp;
+            return noLvls;
+        } else {
+            //no level ups necessary this time
+            return 0;
+        }
+
+    }
     public LutemonState getLutemonState() {return lutemonState;}
     public void setLutemonState(LutemonState lutemonState) {this.lutemonState = lutemonState;}
 

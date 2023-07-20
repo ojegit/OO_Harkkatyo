@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/mainLinearLayoutStatistics"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Statistics">
+    <LinearLayout
+        android:id="@+id/upperLinearLayoutStatistics"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="0.2"
+        android:orientation="vertical">
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/lowerLinearLayoutStatistics"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="0.8"
+        android:orientation="vertical">
+    </LinearLayout>
+</LinearLayout>

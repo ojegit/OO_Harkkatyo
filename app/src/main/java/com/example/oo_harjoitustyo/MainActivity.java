@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void switchStatistics(View view) {
+        Intent intent = new Intent(this, Statistics.class);
+        startActivity(intent);
+    }
+
     public void switchToBattleArena(View view) {
         Intent intent = new Intent(this, BattleArena.class);
         startActivity(intent);

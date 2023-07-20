@@ -69,6 +69,7 @@ public class BattleArena extends AppCompatActivity {
                 rg.addView(cb);
 
                 //add listener to checkbox
+                //https://stackoverflow.com/questions/16220156/how-to-limit-number-of-checkboxes-that-can-be-checked
                 cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -390,8 +391,8 @@ public class BattleArena extends AppCompatActivity {
 
 
         msg = "Combat results:\nNo rounds: " +noRounds+
-                "\nDamage done per combatant: "
-                +lutemonA.color+"("+lutemonA.name+"): " +avgDamage[0]+ " and "
+                "\nDamage done per combatant:\n"
+                +lutemonA.color+"("+lutemonA.name+"): " +avgDamage[0]+ "and\n"
                 +lutemonB.color+"("+lutemonB.name+"): "+avgDamage[1];
 
         //tvBattleMsg.append(msg+"\n");
@@ -404,6 +405,22 @@ public class BattleArena extends AppCompatActivity {
         lutemonA.setNoRoundsFought(lutemonA.getNoRoundsFought() + noRounds);
         lutemonB.setNoRoundsFought(lutemonB.getNoRoundsFought() + noRounds);
         //
+
+        //check level up eligibility
+        int noLvlUpsA = lutemonA.checkLevelUp(2);
+        int noLvlUpsB = lutemonA.checkLevelUp(2);
+        if(noLvlUpsA > 0) {
+            //announce if lutemon got a level up
+            Toast.makeText(context,
+                    lutemonA.getName()+"("+lutemonA.getColor()+") got " +noLvlUpsA+ " level up(s)!",
+                    Toast.LENGTH_SHORT).show();
+        }
+        if(noLvlUpsB > 0) {
+            //announce if lutemon got a level up
+            Toast.makeText(context,
+                    lutemonB.getName()+"("+lutemonB.getColor()+") got " +noLvlUpsB+ " level up(s)!",
+                    Toast.LENGTH_SHORT).show();
+        }
 
 
         //clean checklist
