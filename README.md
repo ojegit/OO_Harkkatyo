@@ -24,7 +24,8 @@
 |Satunnaisuus|
 |Fragmentit|x
 |Tietojen tallennus ja lataus|
-|Tilastojen visualisointi|
+|Tilastojen visualisointi|x
+|GridLayout (NEW)|x
 |Lutemonin poisto pysyvästi (NEW)|x
 |Kuvan lataaminen tiedostosta (NEW)|
 |Tilastotietojen tallennus (NEW)|
@@ -64,9 +65,11 @@ is selected afterwards (no listener required))
 - add pictures to each lutemon (currently fixed, but different nonetheless)
 - implement fragments
 
-#
 ### Changes:
+#### 07/21/2023
+- added new statistics page to main layout: some statistics are show in a gridlayout containing various AnyChart objects
 #### 07/20/2023
+- added AnyChart to Android Studio and tested its functionality
 - battle recycle views and layouts need to be adjusted and aligned properly; adding simple animations when each combatant is introduced
 - began implementing charts for statistics (groupings by color have to be performed separately or a common DB used to collect overall stats that maintain information even after deleting lutemons)
 - training mode completed

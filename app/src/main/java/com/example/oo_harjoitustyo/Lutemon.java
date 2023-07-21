@@ -58,6 +58,8 @@ public class Lutemon implements Serializable {
     public ArrayList<Lutemon> lastOpponents;
     //
 
+
+
     public Lutemon(){}
     public Lutemon(String name, Color color, int attack, int defence, int experience, int health, int maxHealth) {
         idCounter++;

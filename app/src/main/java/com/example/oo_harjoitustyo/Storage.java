@@ -68,6 +68,27 @@ public class Storage {
         );
     }
 
+    //get lutemons by color as hashmap with color and arraylist as its constituents
+    public HashMap<Lutemon.Color,ArrayList<Lutemon>> getLutemonsByColor() {
+        HashMap<Lutemon.Color,ArrayList<Lutemon>> lutemonByColor = new HashMap<>();
+
+        //colors
+        for(Lutemon.Color color : Lutemon.Color.values()) {
+            ArrayList<Lutemon> tmp = new ArrayList<>();
+
+            //fetch each by color
+            lutemons.forEach( (key,lutemon) -> {
+                if(lutemon.getColor() == color) {
+                    tmp.add(lutemon);
+                }
+            });
+
+            //append array list to hashmap
+            lutemonByColor.put(color,tmp);
+        }
+        return lutemonByColor;
+    }
+
 
     //load data from file
     public void loadStorage(Context context) {
