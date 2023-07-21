@@ -1,6 +1,6 @@
 # Object oriented programming: final project
 
-### Future development possibilities:
+## Future development possibilities:
 - additional stats such as armor, dexterity etc. 
 - user profiles
 - concept of time
@@ -12,7 +12,7 @@
 - escape from battle
 - spells and buffs
 
-### Realized features for scoring
+## Realized features for scoring
 |Vaatimus|Tehty
 |-|-
 |Perusvaatimukset|x
@@ -23,7 +23,7 @@
 |Kuolema pois|x
 |Satunnaisuus|
 |Fragmentit|x
-|Tietojen tallennus ja lataus|
+|Tietojen tallennus ja lataus|x
 |Tilastojen visualisointi|x
 |GridLayout (NEW)|x
 |Lutemonin poisto pysyvästi (NEW)|x
@@ -32,18 +32,27 @@
 |Vuoropohjainen taistelu (NEW)|
 |Taistelusta voi poistua kesken kaiken (NEW)|
 
-### Known bugs:
+
+## GUI Pictures
+![Main View](./documentation/gui/main_view.png)
+![Add Lutemon View](./documentation/gui/add_lutemon_view.png)
+![List Lutemons View](./documentation/gui/list_lutemons_view.png)
+![Load Data Popup](./documentation/gui/load_data_popup.png)
+![Save Data Popup](./documentation/gui/save_data_popup.png)
+![Statistics View](./documentation/gui/statistics_view.png)
+![Move View, Home](./documentation/gui/move_home_view.png)
+![Move View, Train](./documentation/gui/move_home_train.png)
+![Battle View](./documentation/gui/battle_view.png)
+
+
+## Known bugs:
 - Sometimes PERISHED state is not displayed in lutemon list view even though this is the case and it is registered by the move lutemons view
 - cannot move more than one lutemon at a time between states/locations (`FIXED`)
 - lutemons' stats information does not fit completely into left/right layout in battle view
 
+## Completed
 ### Not done:
 - combat graphics (animations need to be used for full points; lighter version with recycle view has already been implemented)
-- restore perished lutemons
-- save/load statistics
-- collect more statistics 
-- print graphs of statistics 
-- save/load statistics on load
 - randomization
 - unit tests
 - documentation and class diagrams to `/documentation` and `/documentation/ht.xmi`!
@@ -55,6 +64,7 @@ is selected afterwards (no listener required))
 - turn based combat (OPTIONAL, request more points)
 - make it possible to load lutemon image from file (OPTIONAL, request more points)
 ### Done: 
+- restore perished lutemons
 - graph statistics (e.g AnyChart package)
 - collect statistics
 - main view
@@ -65,9 +75,11 @@ is selected afterwards (no listener required))
 - add pictures to each lutemon (currently fixed, but different nonetheless)
 - implement fragments
 
-### Changes:
+## Changes:
 #### 07/21/2023
-- added new statistics page to main layout: some statistics are show in a gridlayout containing various AnyChart objects
+- added storage load and save functionalities, and buttons to main view
+- added new statistics page to main layout
+- added statistics in a gridlayout containing various AnyChart objects
 #### 07/20/2023
 - added AnyChart to Android Studio and tested its functionality
 - battle recycle views and layouts need to be adjusted and aligned properly; adding simple animations when each combatant is introduced
