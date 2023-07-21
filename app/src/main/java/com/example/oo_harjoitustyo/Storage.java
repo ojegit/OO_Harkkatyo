@@ -1,6 +1,7 @@
 package com.example.oo_harjoitustyo;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -68,7 +69,7 @@ public class Storage {
         );
     }
 
-    //get lutemons by color as hashmap with color and arraylist as its constituents
+    //get lutemons by color
     public HashMap<Lutemon.Color,ArrayList<Lutemon>> getLutemonsByColor() {
         HashMap<Lutemon.Color,ArrayList<Lutemon>> lutemonByColor = new HashMap<>();
 
@@ -90,13 +91,37 @@ public class Storage {
     }
 
 
+    //get lutemons by state
+    public HashMap<Lutemon.LutemonState,ArrayList<Lutemon>> getLutemonsByState() {
+        HashMap<Lutemon.LutemonState,ArrayList<Lutemon>> lutemonByState = new HashMap<>();
+
+        //states
+        for(Lutemon.LutemonState state : Lutemon.LutemonState.values()) {
+            ArrayList<Lutemon> tmp = new ArrayList<>();
+
+            //fetch each by color
+            lutemons.forEach( (key,lutemon) -> {
+                if(lutemon.getLutemonState() == state) {
+                    tmp.add(lutemon);
+                }
+            });
+
+            //append array list to hashmap
+            lutemonByState.put(state,tmp);
+        }
+        return lutemonByState;
+    }
+
+
     //load data from file
     public void loadStorage(Context context) {
         try {
             ObjectInputStream ois = new ObjectInputStream(context.openFileInput("lutemons.data"));
             lutemons = (HashMap<String, Lutemon>) ois.readObject();
             ois.close();
+
             System.out.println("File read successful!");
+            Toast.makeText(context, "Lutemons loaded from 'lutemons.data' successfully!", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             System.out.println("File read failed!: "+ e);
             e.printStackTrace();
@@ -116,6 +141,10 @@ public class Storage {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(context.openFileOutput("lutemons.data", Context.MODE_PRIVATE));
             oos.writeObject(lutemons);
+            oos.close();
+
+            System.out.println("File write successful!");
+            Toast.makeText(context, "Lutemons saved to 'lutemons.data' successfully!", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             System.out.println("Saving users failed!: "+ e);
             e.printStackTrace();

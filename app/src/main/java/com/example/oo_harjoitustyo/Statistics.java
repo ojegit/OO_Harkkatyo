@@ -7,6 +7,7 @@ import android.widget.ProgressBar;
 
 import com.anychart.anychart.AnyChart;
 import com.anychart.anychart.AnyChartView;
+import com.anychart.anychart.Cartesian;
 import com.anychart.anychart.DataEntry;
 import com.anychart.anychart.Pie;
 import com.anychart.anychart.ValueDataEntry;
@@ -31,6 +32,7 @@ public class Statistics extends AppCompatActivity {
         NO_LEVELS,
         NO_ATTACKS,
         NO_DEFENCES,
+
     }
 
     //aggregated color and statistic
@@ -59,21 +61,80 @@ public class Statistics extends AppCompatActivity {
         //overall statistics
         calcOverallStatistics();
 
-        
-        //Pie chart example
-        Pie pie = AnyChart.pie();
 
+        //
+        //3x2 GRID LAYOUT
+        //
+        //[1,1] Lutemon Counts By Color
+        countsByColorBarChart(R.id.any_chart_view_11);
 
+        //[1,2] Lutemon Counts By State
+        countsByStateBarChart(R.id.any_chart_view_12);
+
+        //[2,1] Wins By Color, Pie Chart (and win%)
+        winsByColorPieChart(R.id.any_chart_view_21);
+
+        //[2,2] Losses By Color, Pie Chart (and loss%)
+        lossesByColorPieChart(R.id.any_chart_view_22);
+
+        //[3,1]
+        //[3,2]
+
+    }
+
+    public void countsByStateBarChart(int id) {
+        Cartesian barChart = AnyChart.bar();
         List<DataEntry> data = new ArrayList<>();
-        data.add(new ValueDataEntry("John", 10000));
-        data.add(new ValueDataEntry("Jake", 12000));
-        data.add(new ValueDataEntry("Peter", 18000));
 
+        HashMap<Lutemon.LutemonState,ArrayList<Lutemon>> lutemonsByState = Storage.getInstance().getLutemonsByState();
+
+        for(Lutemon.LutemonState state : Lutemon.LutemonState.values()) {
+            data.add(new ValueDataEntry(state.toString(), lutemonsByState.get(state).size()));
+        }
+
+        barChart.setTitle("Lutemon Counts By State");
+        barChart.data(data);
+        AnyChartView anyChartView = (AnyChartView) findViewById(id);
+        anyChartView.setChart(barChart);
+    }
+
+    public void winsByColorPieChart(int id) {
+        Pie pie = AnyChart.pie();
+        List<DataEntry> data = new ArrayList<>();
+        for(Lutemon.Color color : Lutemon.Color.values()) {
+
+            data.add(new ValueDataEntry(color.toString(), statisticsPerColor.get(color).get(Statistic.NO_WINS)));
+
+        }
+        pie.setTitle("Wins By Color");
         pie.data(data);
-
-        AnyChartView anyChartView = (AnyChartView) findViewById(R.id.any_chart_view);
+        AnyChartView anyChartView = (AnyChartView) findViewById(id);
         anyChartView.setChart(pie);
     }
+
+    public void lossesByColorPieChart(int id) {
+        Pie pie = AnyChart.pie();
+        List<DataEntry> data = new ArrayList<>();
+        for(Lutemon.Color color : Lutemon.Color.values()) {
+            data.add(new ValueDataEntry(color.toString(), statisticsPerColor.get(color).get(Statistic.NO_LOSSES)));
+        }
+        pie.setTitle("Losses By Color");
+        pie.data(data);
+        AnyChartView anyChartView = (AnyChartView) findViewById(id);
+        anyChartView.setChart(pie);
+    }
+
+   public void countsByColorBarChart(int id) {
+       Cartesian barChart = AnyChart.bar();
+       List<DataEntry> data = new ArrayList<>();
+       for(Lutemon.Color color : Lutemon.Color.values()) {
+           data.add(new ValueDataEntry(color.toString(), statisticsPerColor.get(color).get(Statistic.COUNT)));
+       }
+       barChart.setTitle("Lutemon Counts");
+       barChart.data(data);
+       AnyChartView anyChartView = (AnyChartView) findViewById(id);
+       anyChartView.setChart(barChart);
+   }
 
 
     //initialize

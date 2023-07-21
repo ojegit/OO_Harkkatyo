@@ -2,6 +2,8 @@ package com.example.oo_harjoitustyo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +13,6 @@ import android.widget.RadioGroup;
 public class MainActivity extends AppCompatActivity {
 
     Storage storage;
-    StatisticsStorage statisticsStorage;
-
 
 
     @Override
@@ -20,12 +20,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         //initialize Lutemon storage
         storage = Storage.getInstance();
 
-        //initialize LutemonStatistics storage
-        statisticsStorage = StatisticsStorage.getInstance();
+    }
+
+    public void onClickLoadData(View view) {
+
+        new AlertDialog.Builder(((Activity)this))
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Load data")
+                .setMessage("Are you sure you want to load data?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    Storage.getInstance().loadStorage(this);
+                })
+                .setNegativeButton("No", (dialog, which) -> {
+                    //do nothing
+                    System.out.println("Did not load anything!");
+                })
+                .show();
+    }
+
+
+    public void onClickSaveData(View view) {
+
+        new AlertDialog.Builder(((Activity)this))
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Save data")
+                .setMessage("Are you sure you want to save data?")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    Storage.getInstance().saveStorage(this);
+                })
+                .setNegativeButton("No", (dialog, which) -> {
+                    //do nothing
+                    System.out.println("Did not save anything!");
+                })
+                .show();
     }
 
     public void switchToAddLutemon(View view) {

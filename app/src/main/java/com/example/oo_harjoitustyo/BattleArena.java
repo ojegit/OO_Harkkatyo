@@ -221,6 +221,11 @@ public class BattleArena extends AppCompatActivity {
              */
 
             if(isCheckedList.size() == 2) {
+                //clear old messages
+                if(battleMsgs.size()>0) {
+                    battleMsgs.clear();
+                    battleInfoAdapter.notifyDataSetChanged();
+                }
 
 
             //check if at least two fighters have been selected
@@ -228,19 +233,15 @@ public class BattleArena extends AppCompatActivity {
                 //engage fight
                 fight(isCheckedList.get(0), isCheckedList.get(1));
 
-                //notify RecycleView of the new data
-                battleInfoAdapter.notifyDataSetChanged();
-
                 //clear selected and perished
                 for(int i=0; i<rg.getChildCount(); i++) {
                     CheckBox cb = (CheckBox)rg.getChildAt(i);
                     if(cb.isChecked()){ cb.toggle(); }
                 }
 
+                //notify RecycleView of the new data
+                battleInfoAdapter.notifyDataSetChanged();
 
-
-                //clear checked
-                isCheckedList.clear();
             } else {
                 Toast.makeText(context, "Please, select 2 Lutemons before starting a fight!", Toast.LENGTH_SHORT).show();
             }
@@ -428,6 +429,9 @@ public class BattleArena extends AppCompatActivity {
             for(int j=0; j<rg.getChildCount(); j++) {
                 CheckBox cb = (CheckBox)rg.getChildAt(j);
                 if(cb.getTag().equals(lm.getId()) && lm.getHealth() <= 0) {
+                    //uncheck
+                    if(cb.isChecked()){cb.toggle();}
+                    //remove
                     rg.removeViewAt(j);
                 }
             }

@@ -28,7 +28,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <com.anychart.anychart.AnyChartView
-                    android:id="@+id/any_chart_view"
+                    android:layout_centerInParent="true"
+                    android:id="@+id/any_chart_view_11"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     />
@@ -43,6 +44,16 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="3dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.anychart.anychart.AnyChartView
+                    android:layout_centerInParent="true"
+                    android:id="@+id/any_chart_view_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -53,6 +64,16 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="3dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.anychart.anychart.AnyChartView
+                    android:layout_centerInParent="true"
+                    android:id="@+id/any_chart_view_21"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -63,6 +84,16 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:layout_margin="3dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.anychart.anychart.AnyChartView
+                    android:layout_centerInParent="true"
+                    android:id="@+id/any_chart_view_22"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
