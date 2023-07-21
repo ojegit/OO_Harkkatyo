@@ -41,7 +41,7 @@
 ![Save Data Popup](./documentation/gui/save_data_popup.png)
 ![Statistics View](./documentation/gui/statistics_view.png)
 ![Move View, Home](./documentation/gui/move_home_view.png)
-![Move View, Train](./documentation/gui/move_home_train.png)
+![Move View, Train](./documentation/gui/move_train_view.png)
 ![Battle View](./documentation/gui/battle_view.png)
 
 
