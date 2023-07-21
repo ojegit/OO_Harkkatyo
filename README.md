@@ -43,7 +43,6 @@
 - save/load statistics
 - collect more statistics 
 - print graphs of statistics 
-- graph statistics (e.g AnyChart package)
 - save/load statistics on load
 - randomization
 - unit tests
@@ -56,6 +55,7 @@ is selected afterwards (no listener required))
 - turn based combat (OPTIONAL, request more points)
 - make it possible to load lutemon image from file (OPTIONAL, request more points)
 ### Done: 
+- graph statistics (e.g AnyChart package)
 - collect statistics
 - main view
 - a) loading of objects in different fragments based or b) state or information passing between fragment
@@ -96,7 +96,8 @@ since fragment to fragment direct communication is no longer needed
 - added states of color and location for Lutemons
 - as result of implementing states/locations all objects are loaded from main storage and allocated to each fragment on load fragment load
 - changed storage hashmap keys from integers to string which is based on the created object instance time in milliseconds
-
+#### 07/16/2023
+- N/A
 #### 07/15/2023
 - began implementing statistics collection
 - Main GUI pages: initialized, add page
