@@ -28,11 +28,10 @@ The goal of this project is to be able to generate new Lutemons, train them, bei
 
 The landing view or the first view when the program starts is from now on called "the main view".
 
-<h3>Instructions</h3>
 <h4>Generating new Lutemons</h4>
 Open main view and press "Lisää uusi Lutemon". Choose a colour, give a name and press "Lisää uusi Lutemon" to add it to DB.
 
-<h4>List all available Lutemons<h4>
+<h4>List all available Lutemons</h4>
 Press "Listaa Lutemonit" at main view. Not only are all Lutemons shown here but a number of statistics are shown as well. When a Lutemon Perishes in order to restore it come back to this view and press on the lightning icon on top of its card.
 
 In order to remove Lutemon permanently press the thrash bin icon on bottom lower corder of its card.
@@ -42,7 +41,7 @@ Assuming you have already generated a new Lutemon to be able to train it you mus
 
 Should the lutemon get enough experience points a level up message should pop up to the screen.
 
-<h4>Fighting Lutemons<h4>
+<h4>Fighting Lutemons</h4>
 Having generated at least two Lutemons, go to "Siirrä Lutemoneja" and move them to "Taistelu" by selecting as many Lutemons as you want, selecting "Taistelu" from the bottom of the view and pressing "Siirrä". 
 
 Go back to main view, and navitage to "Taisteluareenalle."
@@ -55,10 +54,10 @@ The slaying party will receive an experience point and two such points will gran
 
 Should one want to review their Lutemon this can be accomplished from the "Listaa Lutemonit" at the main view. A Lutemon can be revived when its card has a lightning icon on the top right corner.
 
-<h4>Statistics<h4>
+<h4>Statistics</h4>
 In order to see various statistics related to the Lutemons navitage to "Tilastot" in the main view. All of the statistics are interactive. 
 
-<h4>Saving and loading<h4>
+<h4>Saving and loading</h4>
 Both save and load of current state of the Lutemons can be accomplished by pressing "Tallenna tiedot" in order to save and "Lataa tiedot" load. Note that if Lutemons are deleted permanently and save is done after this all progress is lost.
 
 ## GUI Pictures
