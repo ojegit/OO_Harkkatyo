@@ -30,7 +30,7 @@ Open main view and press "Lisää uusi Lutemon". Choose a colour, give a name an
 <h4>List all available Lutemons</h4>
 Press "Listaa Lutemonit" at main view. Not only are all Lutemons shown here but a number of statistics are shown as well. When a Lutemon Perishes in order to restore it come back to this view and press on the lightning icon on top of its card.
 
-In order to remove Lutemon permanently press the thrash bin icon on bottom lower corder of its card.
+In order to remove Lutemon permanently press the thrash bin icon on the bottom lower corner of its card.
 
 <h4>Training Lutemons</h4>
 Assuming you have already generated a new Lutemon to be able to train it you must go to "Siirrä Lutemoneja". "Koti" is the default state for all newly genenerate Lutemons. Select as many Lutemons as you want, select "Treeni" on bottom of the view and press "Siirrä". Having done that navigate to "Treeni", select as many Lutemons as you want and press "Kouluta" button in the middle of the screen to initiate the train. 
@@ -40,7 +40,7 @@ Should the lutemon get at least two experience points a level up message should 
 <h4>Fighting Lutemons</h4>
 Having generated at least two Lutemons, go to "Siirrä Lutemoneja" and move them to "Taistelu" by selecting as many Lutemons as you want, selecting "Taistelu" from the bottom of the view and pressing "Siirrä". 
 
-Go back to main view, and navitage to "Taisteluareenalle."
+Go back to main view, and make your way to "Taisteluareenalle".
 
 Select at most two Lutemons and make note of their order as the one selected first will be the attacker. Press "Taistele" on top right corner to begin combat. 
 
@@ -48,13 +48,14 @@ The progress of the fight is shown in the botton part of the screen and the figh
 
 The slaying party will receive an experience point and two such points will grant a level up. 
 
-Should one want to review their Lutemon this can be accomplished from the "Listaa Lutemonit" at the main view. A Lutemon can be revived when its card has a lightning icon on the top right corner.
+Should one want to revive their Lutemon this can be accomplished from the "Listaa Lutemonit" at the main view. A Lutemon can be revived when its card has a lightning icon on the top right corner.
 
 <h4>Statistics</h4>
 In order to see various statistics related to the Lutemons navitage to "Tilastot" in the main view. All of the statistics are interactive. 
 
 <h4>Saving and loading</h4>
-Both save and load of current state of the Lutemons can be accomplished by pressing "Tallenna tiedot" in order to save and "Lataa tiedot" load. Note that if Lutemons are deleted permanently and save is done after this all progress is lost.
+Both save and load of current state of the Lutemons can be accomplished by pressing "Tallenna tiedot" in order to save and "Lataa tiedot" to load. 
+
 
 ## GUI Pictures
 ![Main View](./documentation/gui/main_view.png)
