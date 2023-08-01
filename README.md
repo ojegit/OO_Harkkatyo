@@ -3,6 +3,7 @@
 ## Future development possibilities:
 - additional stats such as armor, dexterity etc. 
 - user profiles
+- cloud saves
 - concept of time
 - turn based combat
 - wounds heal over time
@@ -44,6 +45,8 @@
 ![Move View, Train](./documentation/gui/move_train_view.png)
 ![Battle View](./documentation/gui/battle_view.png)
 
+## Class diagram 
+![Class Diagram](./documentation/classDiagram.png)
 
 ## Known bugs:
 - Sometimes PERISHED state is not displayed in lutemon list view even though this is the case and it is registered by the move lutemons view
