@@ -92,7 +92,7 @@ public class Statistics extends AppCompatActivity {
             data.add(new ValueDataEntry(state.toString(), lutemonsByState.get(state).size()));
         }
 
-        barChart.setTitle("Lutemon Counts By State");
+        barChart.setTitle("Lutemonien lkm tilaa kohden");
         barChart.data(data);
         AnyChartView anyChartView = (AnyChartView) findViewById(id);
         anyChartView.setChart(barChart);
@@ -106,7 +106,7 @@ public class Statistics extends AppCompatActivity {
             data.add(new ValueDataEntry(color.toString(), statisticsPerColor.get(color).get(Statistic.NO_WINS)));
 
         }
-        pie.setTitle("Wins By Color");
+        pie.setTitle("Voittojen lkm väreittäin");
         pie.data(data);
         AnyChartView anyChartView = (AnyChartView) findViewById(id);
         anyChartView.setChart(pie);
@@ -118,7 +118,7 @@ public class Statistics extends AppCompatActivity {
         for(Lutemon.Color color : Lutemon.Color.values()) {
             data.add(new ValueDataEntry(color.toString(), statisticsPerColor.get(color).get(Statistic.NO_LOSSES)));
         }
-        pie.setTitle("Losses By Color");
+        pie.setTitle("Häviöiden lkm väreittäin");
         pie.data(data);
         AnyChartView anyChartView = (AnyChartView) findViewById(id);
         anyChartView.setChart(pie);
@@ -130,7 +130,7 @@ public class Statistics extends AppCompatActivity {
        for(Lutemon.Color color : Lutemon.Color.values()) {
            data.add(new ValueDataEntry(color.toString(), statisticsPerColor.get(color).get(Statistic.COUNT)));
        }
-       barChart.setTitle("Lutemon Counts");
+       barChart.setTitle("Lutemonien lkm väreittäin");
        barChart.data(data);
        AnyChartView anyChartView = (AnyChartView) findViewById(id);
        anyChartView.setChart(barChart);

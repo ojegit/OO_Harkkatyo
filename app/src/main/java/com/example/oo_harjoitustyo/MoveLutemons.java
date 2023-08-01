@@ -206,9 +206,9 @@ public class MoveLutemons extends AppCompatActivity {
 
                 //announce transfer
                 Toast.makeText(view.getContext(),
-                        "Moved " +isChecked.size()+
-                                " lutemons from "
-                                +lutemonCurr+" to "
+                        "Siirrettiin " +isChecked.size()+
+                                " kpl Lutemoneja  "
+                                +lutemonCurr+" -> "
                                 +lutemonDest, Toast.LENGTH_SHORT).show();
             }
 

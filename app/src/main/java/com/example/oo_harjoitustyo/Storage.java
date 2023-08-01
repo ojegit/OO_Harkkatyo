@@ -121,7 +121,7 @@ public class Storage {
             ois.close();
 
             System.out.println("File read successful!");
-            Toast.makeText(context, "Lutemons loaded from 'lutemons.data' successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Lutemonit ladattiin tiedostosta 'lutemons.data' onnistuneesti!", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             System.out.println("File read failed!: "+ e);
             e.printStackTrace();
@@ -144,7 +144,7 @@ public class Storage {
             oos.close();
 
             System.out.println("File write successful!");
-            Toast.makeText(context, "Lutemons saved to 'lutemons.data' successfully!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Lutemonit tallennettiin tiedostoon 'lutemons.data' onnistuneesti!", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             System.out.println("Saving users failed!: "+ e);
             e.printStackTrace();

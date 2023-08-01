@@ -29,12 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
         new AlertDialog.Builder(((Activity)this))
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Load data")
-                .setMessage("Are you sure you want to load data?")
-                .setPositiveButton("Yes", (dialog, which) -> {
+                .setTitle("Lataa tiedot")
+                .setMessage("Oletko varma että haluat ladata tiedot?")
+                .setPositiveButton("Kyllä", (dialog, which) -> {
                     Storage.getInstance().loadStorage(this);
                 })
-                .setNegativeButton("No", (dialog, which) -> {
+                .setNegativeButton("Ei", (dialog, which) -> {
                     //do nothing
                     System.out.println("Did not load anything!");
                 })
@@ -46,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
 
         new AlertDialog.Builder(((Activity)this))
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setTitle("Save data")
-                .setMessage("Are you sure you want to save data?")
-                .setPositiveButton("Yes", (dialog, which) -> {
+                .setTitle("Tallenna tiedot")
+                .setMessage("Oletko varma että haluat tallentaa tiedot?")
+                .setPositiveButton("Kyllä", (dialog, which) -> {
                     Storage.getInstance().saveStorage(this);
                 })
-                .setNegativeButton("No", (dialog, which) -> {
+                .setNegativeButton("Ei", (dialog, which) -> {
                     //do nothing
                     System.out.println("Did not save anything!");
                 })

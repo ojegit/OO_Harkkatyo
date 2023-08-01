@@ -91,26 +91,26 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="Home" />
+                    android:text="Koti" />
                 <RadioButton
                     android:id="@+id/rbTrain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="Train" />
+                    android:text="Treeni" />
                 <RadioButton
                     android:id="@+id/rbBattle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="Battle" />
+                    android:text="Taistelu" />
                 <!--
                 <RadioButton
                     android:id="@+id/rbPerished"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="Perished" />
+                    android:text="Menehtynyt" />
                     -->
             </RadioGroup>
             <Button
@@ -118,7 +118,7 @@
                 android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:textSize="8dp"
-                android:text="Move"
+                android:text="Siirrä"
                 android:onClick="moveSelected"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +133,7 @@
                 android:layout_height="40dp"
                 android:onClick="switchToMain"
                 android:textSize="8dp"
-                android:text="Back"
+                android:text="Takaisin"
                 android:textColor="#000000"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

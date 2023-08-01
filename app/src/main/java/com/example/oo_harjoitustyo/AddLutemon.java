@@ -56,10 +56,10 @@ public class AddLutemon extends AppCompatActivity {
             Storage.getInstance().addLutemon(lutemon);
 
 
-            String msg = lutemon.getColor()+
-                    " Lutemon named '"
+            String msg = "Luotiin " +lutemon.getColor()+
+                    " Lutemon nimeltä '"
                     +lutemon.getName()+
-                    "' generated.";
+                    "'.";
 
             //announce transfer
             Toast.makeText(view.getContext(), msg, Toast.LENGTH_SHORT).show();

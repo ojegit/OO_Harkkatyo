@@ -89,7 +89,7 @@ public class BattleArena extends AppCompatActivity {
                                 }
                                 if(contains == 0) { isCheckedList.add(lm);}
 
-                                Toast.makeText(context, "Selected "+cb.getText()+ ", "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Valittu "+cb.getText()+ ", "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
                             } else {
                                 numberOfCheckboxesChecked--;
                                 //remove unchecked from the list
@@ -102,7 +102,7 @@ public class BattleArena extends AppCompatActivity {
                                         break;
                                     }
                                 }
-                                Toast.makeText(context, "Unckecked, "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Poistettu valinta, "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
                             }
 
                         }
@@ -165,7 +165,7 @@ public class BattleArena extends AppCompatActivity {
                                 }
                                 if(contains == 0) { isCheckedList.add(lm);}
 
-                                Toast.makeText(context, "Selected "+cb.getText()+ ", "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Valittu "+cb.getText()+ ", "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
                             } else {
                                 numberOfCheckboxesChecked--;
                                 //remove unchecked from the list
@@ -178,7 +178,7 @@ public class BattleArena extends AppCompatActivity {
                                         break;
                                     }
                                 }
-                                Toast.makeText(context, "Unckecked, "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Poistettiin valinta, "+numberOfCheckboxesChecked+"/2", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -195,30 +195,6 @@ public class BattleArena extends AppCompatActivity {
 
             //TBA: add a number in which order the checkboxes have been checked!
 
-            /*
-            List<Integer> isChecked = new ArrayList<>(); //keep track of selected lutemons' ids
-            //List<String> isChecked = new ArrayList<>(); //keep track of selected lutemons' ids
-            //
-            for (int i = 0; i < rg.getChildCount(); i++) {
-                CheckBox cb = (CheckBox)rg.getChildAt(i);
-                if (cb.isChecked()) {
-
-                    //get id
-                    //Lutemon lutemonInFragment = lutemons.get(i);
-                    //String id = lutemonInFragment.getId();
-                    //note: cb tag and id should match!
-                    //assert(id.equals(String.valueOf(cb.getTag())));
-                    //
-                    isChecked.add(i);
-
-                    //uncheck
-                    cb.toggle();
-                }
-                if(isChecked.size() == 2) {
-                    break;
-                }
-            }
-             */
 
             if(isCheckedList.size() == 2) {
                 //clear old messages
@@ -243,7 +219,7 @@ public class BattleArena extends AppCompatActivity {
                 battleInfoAdapter.notifyDataSetChanged();
 
             } else {
-                Toast.makeText(context, "Please, select 2 Lutemons before starting a fight!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Valitse 2 Lutemonia ennen taistelun aloittamista!", Toast.LENGTH_SHORT).show();
             }
 
 
@@ -270,9 +246,9 @@ public class BattleArena extends AppCompatActivity {
             //
             noRounds++;
             if(noRounds>1) {
-                msg = "\nROUND " +noRounds+ "\n----------------\n";
+                msg = "\nERÄ " +noRounds+ "\n----------------\n";
             } else {
-                msg = "ROUND " +noRounds+ "\n----------------\n";
+                msg = "ERÄ " +noRounds+ "\n----------------\n";
             }
             battleMsgs.add(new BattleMsgContainer(msg, BattleMsgContainer.MessageType.TEXT, null));
             //tvBattleMsg.append(msg+"\n");
@@ -292,7 +268,7 @@ public class BattleArena extends AppCompatActivity {
             //
 
             //A attacks B
-            msg = lutemonA.color+"("+lutemonA.name+") attacks "+lutemonB.color+ "("+lutemonB.name+")";
+            msg = lutemonA.color+"("+lutemonA.name+") hyökkää "+lutemonB.color+ "("+lutemonB.name+")";
             //tvBattleMsg.append(msg+"\n");
             battleMsgs.add(new BattleMsgContainer(msg, BattleMsgContainer.MessageType.TEXT, null));
             System.out.println(msg);
@@ -307,7 +283,7 @@ public class BattleArena extends AppCompatActivity {
             //check B's health
             if(lutemonB.health > 0) {
                 //
-                msg = lutemonB.color+"("+lutemonB.name+") manages to escape death.";
+                msg = lutemonB.color+"("+lutemonB.name+") selvisi hengissä.";
                 //tvBattleMsg.append(msg+"\n");
                 battleMsgs.add(new BattleMsgContainer(msg, BattleMsgContainer.MessageType.TEXT, null));
                 System.out.println(msg);
@@ -326,7 +302,7 @@ public class BattleArena extends AppCompatActivity {
                 //
 
                 //B attacks A
-                msg = lutemonB.color+"("+lutemonB.name+") attacks "+lutemonA.color+ "("+lutemonA.name+")";
+                msg = lutemonB.color+"("+lutemonB.name+") hyökkää "+lutemonA.color+ "("+lutemonA.name+")";
                 //tvBattleMsg.append(msg+"\n");
                 battleMsgs.add(new BattleMsgContainer(msg, BattleMsgContainer.MessageType.TEXT, null));
                 System.out.println(msg);
@@ -341,7 +317,7 @@ public class BattleArena extends AppCompatActivity {
 
                 //check A's health
                 if(lutemonA.health > 0) {
-                    msg = lutemonA.color+"("+lutemonA.name+") manages to escape death.";
+                    msg = lutemonA.color+"("+lutemonA.name+") selvisi hengissä.";
                     //tvBattleMsg.append(msg+"\n");
                     battleMsgs.add(new BattleMsgContainer(msg, BattleMsgContainer.MessageType.TEXT, null));
                     System.out.println(msg);
@@ -354,7 +330,7 @@ public class BattleArena extends AppCompatActivity {
                     lutemonB.setNoWins(lutemonB.getNoWins() + 1);
                     lutemonA.setNoLosses(lutemonA.getNoLosses() + 1);
 
-                    msg = lutemonA.color+"("+lutemonA.name+") IS DEAD, "+lutemonB.color+"("+lutemonB.name+")  WON!";
+                    msg = lutemonA.color+"("+lutemonA.name+") MENEHTYI, "+lutemonB.color+"("+lutemonB.name+")  VOITTI!";
                     //tvBattleMsg.append(msg+"\n");
                     lutemonA.setLutemonState(Lutemon.LutemonState.PERISHED);
                     battleMsgs.add(new BattleMsgContainer(msg, BattleMsgContainer.MessageType.TEXT, lutemonA));
@@ -378,7 +354,7 @@ public class BattleArena extends AppCompatActivity {
                 lutemonA.setNoWins(lutemonA.getNoWins() + 1);
                 lutemonB.setNoLosses(lutemonB.getNoLosses() + 1);
 
-                msg = lutemonB.color+"("+lutemonB.name+") IS DEAD, "+lutemonA.color+"("+lutemonA.name+")  WON!";
+                msg = lutemonB.color+"("+lutemonB.name+") MENEHTYI, "+lutemonA.color+"("+lutemonA.name+")  VOITTI!";
                 //tvBattleMsg.append(msg+"\n");
 
                 lutemonB.setLutemonState(Lutemon.LutemonState.PERISHED);
@@ -391,9 +367,8 @@ public class BattleArena extends AppCompatActivity {
         } while(lutemonA.health > 0 && lutemonB.health > 0);
 
 
-        msg = "Combat results:\nNo rounds: " +noRounds+
-                "\nDamage done per combatant:\n"
-                +lutemonA.color+"("+lutemonA.name+"): " +avgDamage[0]+ "and\n"
+        msg = "Taisteltiin " +noRounds+" erää ja tehtiin vahinkoa per taistelija "
+                +lutemonA.color+"("+lutemonA.name+"): " +avgDamage[0]+ " ja "
                 +lutemonB.color+"("+lutemonB.name+"): "+avgDamage[1];
 
         //tvBattleMsg.append(msg+"\n");
@@ -413,13 +388,13 @@ public class BattleArena extends AppCompatActivity {
         if(noLvlUpsA > 0) {
             //announce if lutemon got a level up
             Toast.makeText(context,
-                    lutemonA.getName()+"("+lutemonA.getColor()+") got " +noLvlUpsA+ " level up(s)!",
+                    lutemonA.getName()+"("+lutemonA.getColor()+") sai " +noLvlUpsA+ " level uppia!",
                     Toast.LENGTH_SHORT).show();
         }
         if(noLvlUpsB > 0) {
             //announce if lutemon got a level up
             Toast.makeText(context,
-                    lutemonB.getName()+"("+lutemonB.getColor()+") got " +noLvlUpsB+ " level up(s)!",
+                    lutemonB.getName()+"("+lutemonB.getColor()+") sai " +noLvlUpsB+ " level uppia!",
                     Toast.LENGTH_SHORT).show();
         }
 

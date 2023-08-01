@@ -103,7 +103,7 @@ public class Train extends Fragment {
                         if (noLvlUps > 0) {
                             //announce if lutemon got a level up
                             Toast.makeText(getContext(),
-                                    lutemonInFragment.getName() + "(" + lutemonInFragment.getColor() + ") got " + noLvlUps + " level up(s)!",
+                                    lutemonInFragment.getName() + "(" + lutemonInFragment.getColor() + ") sail " + noLvlUps + " level uppia!",
                                     Toast.LENGTH_SHORT).show();
                         }
 

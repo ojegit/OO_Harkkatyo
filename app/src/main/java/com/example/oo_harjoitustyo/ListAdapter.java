@@ -81,15 +81,15 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder>   { //implemen
             //https://stackoverflow.com/questions/2115758/how-do-i-display-an-alert-dialog-on-android
             new AlertDialog.Builder(((Activity)context))
                     .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("Delete")
-                    .setMessage("Are you sure you want to delete '"+colorName+"'?")
-                    .setPositiveButton("Yes", (dialog, which) -> {
+                    .setTitle("Poista")
+                    .setMessage("Haluatko varmasti poistaa '"+colorName+"'?")
+                    .setPositiveButton("Kyllä", (dialog, which) -> {
                         Storage.getInstance().removeById(id);
                         lutemons.remove(pos);
                         notifyItemRemoved(pos);
-                        System.out.println("Deleted '"+colorName+"' Lutemon!");
+                        System.out.println("Poistettiin '"+colorName+"' Lutemon!");
                     })
-                    .setNegativeButton("No", (dialog, which) -> {
+                    .setNegativeButton("Ei", (dialog, which) -> {
                         //do nothing
                         System.out.println("Did not delete anything!");
                         })
@@ -112,9 +112,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder>   { //implemen
 
                 new AlertDialog.Builder(((Activity)context))
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle("Revive")
-                        .setMessage("Are you sure you want to revive '"+colorName+"'?")
-                        .setPositiveButton("Yes", (dialog, which) -> {
+                        .setTitle("Herätä henkiin")
+                        .setMessage("Haluatko varmasti herättää henkiin '"+colorName+"'?")
+                        .setPositiveButton("Kyllä", (dialog, which) -> {
                             lutemons.get(pos).resetHealth();
                             lutemons.get(pos).setLutemonState(Lutemon.LutemonState.HOME);
                             lutemons.get(pos).setNoTimesRevived(lutemons.get(pos).getNoTimesRevived()+1);
@@ -126,7 +126,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListHolder>   { //implemen
 
                             notifyItemChanged(pos);
                         })
-                        .setNegativeButton("No", (dialog, which) -> {
+                        .setNegativeButton("Ei", (dialog, which) -> {
                             //do nothing
                             System.out.println("Did not delete anything!");
                         })
