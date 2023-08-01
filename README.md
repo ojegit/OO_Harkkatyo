@@ -4,7 +4,7 @@
 
 ## Realized features for scoring
 |Vaatimus|Tehty
-|-|-
+|-|:-:
 |Perusvaatimukset|x
 |RecycleView|x
 |Lutemonilla on kuva|x
@@ -16,11 +16,7 @@
 |Tietojen tallennus ja lataus|x
 |Tilastojen visualisointi|x
 |GridLayout (NEW)|x
-|Lutemonin poisto pysyvästi (NEW)|x
-|Kuvan lataaminen tiedostosta (NEW)|
-|Tilastotietojen tallennus (NEW)|
-|Vuoropohjainen taistelu (NEW)|
-|Taistelusta voi poistua kesken kaiken (NEW)|
+|Lutemonin poistaminen (NEW)|x
 
 ## Project description and manual
 
@@ -37,9 +33,9 @@ Press "Listaa Lutemonit" at main view. Not only are all Lutemons shown here but 
 In order to remove Lutemon permanently press the thrash bin icon on bottom lower corder of its card.
 
 <h4>Training Lutemons</h4>
-Assuming you have already generated a new Lutemon to be able to train it you must go to "Siirrä Lutemoneja", select as many Lutemons as you want, select "Treeni" on bottom of the view and press "Siirrä". Having done that navigate to Treeni, select as many Lutemons as you want and press "Kouluta" button in the middle of the screen to train all of the selected Lutemons. 
+Assuming you have already generated a new Lutemon to be able to train it you must go to "Siirrä Lutemoneja". "Koti" is the default state for all newly genenerate Lutemons. Select as many Lutemons as you want, select "Treeni" on bottom of the view and press "Siirrä". Having done that navigate to "Treeni", select as many Lutemons as you want and press "Kouluta" button in the middle of the screen to initiate the train. 
 
-Should the lutemon get enough experience points a level up message should pop up to the screen.
+Should the lutemon get at least two experience points a level up message should pop up to the screen where attack is raised by 2 and defence by 1 points.
 
 <h4>Fighting Lutemons</h4>
 Having generated at least two Lutemons, go to "Siirrä Lutemoneja" and move them to "Taistelu" by selecting as many Lutemons as you want, selecting "Taistelu" from the bottom of the view and pressing "Siirrä". 
